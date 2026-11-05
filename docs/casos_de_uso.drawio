@@ -1,0 +1,158 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-11-05T21:47:00.000Z" agent="Mozilla/5.0" version="24.0.0" type="device">
+  <diagram id="CasosDeUsoVeterinaria" name="Casos de Uso - Veterinaria Digital">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TÍTULO DEL DIAGRAMA -->
+        <mxCell id="titulo" value="SISTEMA VETERINARIA DIGITAL - DIAGRAMA DE CASOS DE USO (UML)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="250" y="30" width="1150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitulo" value="Proyecto ADSO · Aprendiz: Johan Muñoz · Instructora: Joan Castillo Celis" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=0;fontColor=#555555;" vertex="1" parent="1">
+          <mxGeometry x="250" y="65" width="1150" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- LÍMITE DEL SISTEMA (SYSTEM BOUNDARY) -->
+        <mxCell id="sistema" value="Veterinaria Digital (Límite del Sistema)" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=15;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="380" y="110" width="900" height="920" as="geometry" />
+        </mxCell>
+
+        <!-- CASOS DE USO (DENTRO DEL SISTEMA) -->
+        <mxCell id="cu01" value="CU-01: Iniciar Sesión" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=13;fontStyle=1;fontColor=#000000;" vertex="1" parent="sistema">
+          <mxGeometry x="340" y="40" width="220" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu02" value="CU-02: Gestionar Propietarios&#xa;(CRUD)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="sistema">
+          <mxGeometry x="80" y="120" width="220" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu03" value="CU-03: Gestionar Mascotas&#xa;(CRUD)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="sistema">
+          <mxGeometry x="80" y="200" width="220" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu04" value="CU-04: Buscar Paciente&#xa;en Tiempo Real" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="sistema">
+          <mxGeometry x="80" y="280" width="220" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu05" value="CU-05: Registrar Consulta Médica" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="sistema">
+          <mxGeometry x="580" y="140" width="230" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu06" value="CU-06: Consultar Historial&#xa;Clínico Unificado" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="sistema">
+          <mxGeometry x="580" y="230" width="230" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu07" value="CU-07: Aplicar Vacuna&#xa;(Cálculo Automático)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="sistema">
+          <mxGeometry x="580" y="320" width="230" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu08" value="CU-08: Monitorear Alertas&#xa;Preventivas" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="sistema">
+          <mxGeometry x="120" y="440" width="220" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu09" value="CU-09: Notificar por WhatsApp" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="sistema">
+          <mxGeometry x="450" y="440" width="220" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu10" value="CU-10: Visualizar Dashboard&#xa;Operativo" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="sistema">
+          <mxGeometry x="340" y="570" width="230" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu11" value="CU-11: Generar Reportes&#xa;Asistenciales y Financieros" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="sistema">
+          <mxGeometry x="160" y="700" width="230" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu12" value="CU-12: Exportar Reporte&#xa;a CSV (Excel)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="sistema">
+          <mxGeometry x="510" y="700" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- RELACIONES INCLUDE / EXTEND -->
+        <mxCell id="relExt01" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;" edge="1" parent="sistema" source="cu09" target="cu08">
+          <mxGeometry width="160" relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="relExt02" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;" edge="1" parent="sistema" source="cu12" target="cu11">
+          <mxGeometry width="160" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ACTORES -->
+        <!-- 1. Recepción (Izquierda) -->
+        <mxCell id="actorRecep" value="👤 Recepción&#xa;(Auxiliar)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=13;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="160" y="240" width="60" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- 2. Administrador (Abajo/Izquierda) -->
+        <mxCell id="actorAdmin" value="👤 Administrador&#xa;(Director)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=13;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="160" y="650" width="60" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- 3. Veterinario (Derecha) -->
+        <mxCell id="actorVet" value="👤 Médico&#xa;Veterinario" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=13;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="280" width="60" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- ASOCIACIONES DE ACTOR RECEPCIÓN -->
+        <mxCell id="a_rec_01" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorRecep" target="cu01">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_rec_02" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorRecep" target="cu02">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_rec_03" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorRecep" target="cu03">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_rec_04" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorRecep" target="cu04">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_rec_08" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorRecep" target="cu08">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_rec_10" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorRecep" target="cu10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ASOCIACIONES DE ACTOR VETERINARIO -->
+        <mxCell id="a_vet_01" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorVet" target="cu01">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_vet_03" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorVet" target="cu03">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_vet_04" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorVet" target="cu04">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_vet_05" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorVet" target="cu05">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_vet_06" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorVet" target="cu06">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_vet_07" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorVet" target="cu07">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_vet_10" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorVet" target="cu10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ASOCIACIONES DE ACTOR ADMINISTRADOR -->
+        <mxCell id="a_adm_01" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorAdmin" target="cu01">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_adm_02" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorAdmin" target="cu02">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_adm_08" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorAdmin" target="cu08">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_adm_10" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorAdmin" target="cu10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_adm_11" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorAdmin" target="cu11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
