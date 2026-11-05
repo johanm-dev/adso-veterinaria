@@ -1,0 +1,279 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1520" height="900" viewBox="0 0 1520 900" font-family="Segoe UI, Arial, sans-serif">
+<defs>
+  <marker id="uno" markerUnits="userSpaceOnUse" markerWidth="30" markerHeight="24" refX="30" refY="12" orient="auto-start-reverse" viewBox="0 0 30 24">
+    <path d="M18 3 V21 M24 3 V21" stroke="#334155" stroke-width="1.6" fill="none"/>
+  </marker>
+  <marker id="ceroUno" markerUnits="userSpaceOnUse" markerWidth="30" markerHeight="24" refX="30" refY="12" orient="auto-start-reverse" viewBox="0 0 30 24">
+    <circle cx="12" cy="12" r="4.5" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+    <path d="M24 3 V21" stroke="#334155" stroke-width="1.6" fill="none"/>
+  </marker>
+  <marker id="ceroMuchos" markerUnits="userSpaceOnUse" markerWidth="30" markerHeight="24" refX="30" refY="12" orient="auto-start-reverse" viewBox="0 0 30 24">
+    <circle cx="8" cy="12" r="4.5" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+    <path d="M16 12 L30 2 M16 12 L30 12 M16 12 L30 22" stroke="#334155" stroke-width="1.6" fill="none"/>
+  </marker>
+  <filter id="sombra" x="-5%" y="-5%" width="110%" height="115%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.15"/>
+  </filter>
+</defs>
+<rect width="100%" height="100%" fill="#F8FAFC"/>
+<text x="40" y="45" font-size="24" font-weight="700" fill="#0F172A">Veterinaria Digital — Modelo Entidad-Relación (EER)</text>
+<text x="40" y="70" font-size="14" fill="#475569">Base de datos: veterinaria · Motor: PostgreSQL · 8 tablas · Notación pata de gallo (Crow's Foot)</text>
+<path d="M340 147 H380 V169 H420" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#uno)" marker-end="url(#ceroMuchos)"/>
+<text x="380" y="139" font-size="11" font-style="italic" fill="#475569" text-anchor="middle">tiene</text>
+<path d="M720 147 H760 V169 H800" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#uno)" marker-end="url(#ceroMuchos)"/>
+<text x="760" y="139" font-size="11" font-style="italic" fill="#475569" text-anchor="middle">recibe</text>
+<path d="M1100 147 H1140 V169 H1180" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#uno)" marker-end="url(#ceroMuchos)"/>
+<text x="1140" y="139" font-size="11" font-style="italic" fill="#475569" text-anchor="middle">genera</text>
+<path d="M570 338 V440" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#uno)" marker-end="url(#ceroMuchos)"/>
+<text x="600" y="393" font-size="11" font-style="italic" fill="#475569" text-anchor="middle">recibe</text>
+<path d="M340 487 H380 V531 H420" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#uno)" marker-end="url(#ceroMuchos)"/>
+<text x="380" y="479" font-size="11" font-style="italic" fill="#475569" text-anchor="middle">se aplica</text>
+<path d="M800 487 H760 V553 H720" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#uno)" marker-end="url(#ceroMuchos)"/>
+<text x="760" y="479" font-size="11" font-style="italic" fill="#475569" text-anchor="middle">aplica</text>
+<path d="M950 440 V316" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#uno)" marker-end="url(#ceroMuchos)"/>
+<text x="985" y="382" font-size="11" font-style="italic" fill="#475569" text-anchor="middle">atiende</text>
+<path d="M1180 487 H1140 V509 H1100" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#ceroUno)" marker-end="url(#ceroUno)"/>
+<text x="1140" y="479" font-size="11" font-style="italic" fill="#475569" text-anchor="middle">es</text>
+<g filter="url(#sombra)"><rect x="40" y="100" width="300" height="216" rx="8" fill="#fff" stroke="#0F766E" stroke-width="1.5"/></g>
+<path d="M40 132 V108 a8 8 0 0 1 8 -8 H332 a8 8 0 0 1 8 8 V132 Z" fill="#0F766E"/>
+<text x="52" y="121" font-size="15" font-weight="700" fill="#fff">propietario</text>
+<rect x="48" y="140" width="26" height="14" rx="3" fill="#CA8A04"/>
+<text x="61" y="151" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">PK</text>
+<text x="82" y="151" font-size="13" fill="#0F172A" font-weight="700">id</text>
+<text x="330" y="151" font-size="12" fill="#64748B" text-anchor="end">INT IDENTITY</text>
+<rect x="41" y="158" width="298" height="22" fill="#F1F5F9"/>
+<rect x="48" y="162" width="26" height="14" rx="3" fill="#7C3AED"/>
+<text x="61" y="173" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">UQ</text>
+<text x="82" y="173" font-size="13" fill="#0F172A">documento</text>
+<text x="330" y="173" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(20)</text>
+<text x="82" y="195" font-size="13" fill="#0F172A">nombres</text>
+<text x="330" y="195" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(80)</text>
+<rect x="41" y="202" width="298" height="22" fill="#F1F5F9"/>
+<text x="82" y="217" font-size="13" fill="#0F172A">apellidos</text>
+<text x="330" y="217" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(80)</text>
+<text x="82" y="239" font-size="13" fill="#0F172A">telefono</text>
+<text x="330" y="239" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(20)</text>
+<rect x="41" y="246" width="298" height="22" fill="#F1F5F9"/>
+<text x="82" y="261" font-size="13" fill="#0F172A">correo</text>
+<text x="330" y="261" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(120)</text>
+<text x="82" y="283" font-size="13" fill="#0F172A">direccion</text>
+<text x="330" y="283" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(150)</text>
+<rect x="41" y="290" width="298" height="22" fill="#F1F5F9"/>
+<text x="82" y="305" font-size="13" fill="#0F172A">creado_en</text>
+<text x="330" y="305" font-size="12" fill="#64748B" text-anchor="end">TIMESTAMP</text>
+<g filter="url(#sombra)"><rect x="420" y="100" width="300" height="238" rx="8" fill="#fff" stroke="#0F766E" stroke-width="1.5"/></g>
+<path d="M420 132 V108 a8 8 0 0 1 8 -8 H712 a8 8 0 0 1 8 8 V132 Z" fill="#0F766E"/>
+<text x="432" y="121" font-size="15" font-weight="700" fill="#fff">mascota</text>
+<rect x="428" y="140" width="26" height="14" rx="3" fill="#CA8A04"/>
+<text x="441" y="151" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">PK</text>
+<text x="462" y="151" font-size="13" fill="#0F172A" font-weight="700">id</text>
+<text x="710" y="151" font-size="12" fill="#64748B" text-anchor="end">INT IDENTITY</text>
+<rect x="421" y="158" width="298" height="22" fill="#F1F5F9"/>
+<rect x="428" y="162" width="26" height="14" rx="3" fill="#2563EB"/>
+<text x="441" y="173" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">FK</text>
+<text x="462" y="173" font-size="13" fill="#0F172A" font-style="italic">propietario_id</text>
+<text x="710" y="173" font-size="12" fill="#64748B" text-anchor="end">INT</text>
+<text x="462" y="195" font-size="13" fill="#0F172A">nombre</text>
+<text x="710" y="195" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(60)</text>
+<rect x="421" y="202" width="298" height="22" fill="#F1F5F9"/>
+<rect x="428" y="206" width="26" height="14" rx="3" fill="#64748B"/>
+<text x="441" y="217" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">CK</text>
+<text x="462" y="217" font-size="13" fill="#0F172A">especie</text>
+<text x="710" y="217" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(30)</text>
+<text x="462" y="239" font-size="13" fill="#0F172A">raza</text>
+<text x="710" y="239" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(60)</text>
+<rect x="421" y="246" width="298" height="22" fill="#F1F5F9"/>
+<rect x="428" y="250" width="26" height="14" rx="3" fill="#64748B"/>
+<text x="441" y="261" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">CK</text>
+<text x="462" y="261" font-size="13" fill="#0F172A">sexo</text>
+<text x="710" y="261" font-size="12" fill="#64748B" text-anchor="end">CHAR(1)</text>
+<text x="462" y="283" font-size="13" fill="#0F172A">fecha_nacimiento</text>
+<text x="710" y="283" font-size="12" fill="#64748B" text-anchor="end">DATE</text>
+<rect x="421" y="290" width="298" height="22" fill="#F1F5F9"/>
+<rect x="428" y="294" width="26" height="14" rx="3" fill="#64748B"/>
+<text x="441" y="305" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">CK</text>
+<text x="462" y="305" font-size="13" fill="#0F172A">peso_kg</text>
+<text x="710" y="305" font-size="12" fill="#64748B" text-anchor="end">NUMERIC(6,2)</text>
+<text x="462" y="327" font-size="13" fill="#0F172A">activo</text>
+<text x="710" y="327" font-size="12" fill="#64748B" text-anchor="end">BOOLEAN</text>
+<g filter="url(#sombra)"><rect x="800" y="100" width="300" height="216" rx="8" fill="#fff" stroke="#0F766E" stroke-width="1.5"/></g>
+<path d="M800 132 V108 a8 8 0 0 1 8 -8 H1092 a8 8 0 0 1 8 8 V132 Z" fill="#0F766E"/>
+<text x="812" y="121" font-size="15" font-weight="700" fill="#fff">consulta</text>
+<rect x="808" y="140" width="26" height="14" rx="3" fill="#CA8A04"/>
+<text x="821" y="151" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">PK</text>
+<text x="842" y="151" font-size="13" fill="#0F172A" font-weight="700">id</text>
+<text x="1090" y="151" font-size="12" fill="#64748B" text-anchor="end">INT IDENTITY</text>
+<rect x="801" y="158" width="298" height="22" fill="#F1F5F9"/>
+<rect x="808" y="162" width="26" height="14" rx="3" fill="#2563EB"/>
+<text x="821" y="173" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">FK</text>
+<text x="842" y="173" font-size="13" fill="#0F172A" font-style="italic">mascota_id</text>
+<text x="1090" y="173" font-size="12" fill="#64748B" text-anchor="end">INT</text>
+<rect x="808" y="184" width="26" height="14" rx="3" fill="#2563EB"/>
+<text x="821" y="195" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">FK</text>
+<text x="842" y="195" font-size="13" fill="#0F172A" font-style="italic">veterinario_id</text>
+<text x="1090" y="195" font-size="12" fill="#64748B" text-anchor="end">INT</text>
+<rect x="801" y="202" width="298" height="22" fill="#F1F5F9"/>
+<text x="842" y="217" font-size="13" fill="#0F172A">fecha</text>
+<text x="1090" y="217" font-size="12" fill="#64748B" text-anchor="end">TIMESTAMP</text>
+<text x="842" y="239" font-size="13" fill="#0F172A">motivo</text>
+<text x="1090" y="239" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(200)</text>
+<rect x="801" y="246" width="298" height="22" fill="#F1F5F9"/>
+<text x="842" y="261" font-size="13" fill="#0F172A">diagnostico</text>
+<text x="1090" y="261" font-size="12" fill="#64748B" text-anchor="end">TEXT</text>
+<rect x="808" y="272" width="26" height="14" rx="3" fill="#64748B"/>
+<text x="821" y="283" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">CK</text>
+<text x="842" y="283" font-size="13" fill="#0F172A">costo</text>
+<text x="1090" y="283" font-size="12" fill="#64748B" text-anchor="end">NUMERIC(10,2)</text>
+<rect x="801" y="290" width="298" height="22" fill="#F1F5F9"/>
+<text x="842" y="305" font-size="13" fill="#0F172A">proximo_control</text>
+<text x="1090" y="305" font-size="12" fill="#64748B" text-anchor="end">DATE</text>
+<g filter="url(#sombra)"><rect x="1180" y="100" width="300" height="216" rx="8" fill="#fff" stroke="#0F766E" stroke-width="1.5"/></g>
+<path d="M1180 132 V108 a8 8 0 0 1 8 -8 H1472 a8 8 0 0 1 8 8 V132 Z" fill="#0F766E"/>
+<text x="1192" y="121" font-size="15" font-weight="700" fill="#fff">tratamiento</text>
+<rect x="1188" y="140" width="26" height="14" rx="3" fill="#CA8A04"/>
+<text x="1201" y="151" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">PK</text>
+<text x="1222" y="151" font-size="13" fill="#0F172A" font-weight="700">id</text>
+<text x="1470" y="151" font-size="12" fill="#64748B" text-anchor="end">INT IDENTITY</text>
+<rect x="1181" y="158" width="298" height="22" fill="#F1F5F9"/>
+<rect x="1188" y="162" width="26" height="14" rx="3" fill="#2563EB"/>
+<text x="1201" y="173" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">FK</text>
+<text x="1222" y="173" font-size="13" fill="#0F172A" font-style="italic">consulta_id</text>
+<text x="1470" y="173" font-size="12" fill="#64748B" text-anchor="end">INT</text>
+<text x="1222" y="195" font-size="13" fill="#0F172A">medicamento</text>
+<text x="1470" y="195" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(100)</text>
+<rect x="1181" y="202" width="298" height="22" fill="#F1F5F9"/>
+<text x="1222" y="217" font-size="13" fill="#0F172A">dosis</text>
+<text x="1470" y="217" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(60)</text>
+<text x="1222" y="239" font-size="13" fill="#0F172A">frecuencia</text>
+<text x="1470" y="239" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(60)</text>
+<rect x="1181" y="246" width="298" height="22" fill="#F1F5F9"/>
+<text x="1222" y="261" font-size="13" fill="#0F172A">fecha_inicio</text>
+<text x="1470" y="261" font-size="12" fill="#64748B" text-anchor="end">DATE</text>
+<text x="1222" y="283" font-size="13" fill="#0F172A">fecha_fin</text>
+<text x="1470" y="283" font-size="12" fill="#64748B" text-anchor="end">DATE</text>
+<rect x="1181" y="290" width="298" height="22" fill="#F1F5F9"/>
+<rect x="1188" y="294" width="26" height="14" rx="3" fill="#64748B"/>
+<text x="1201" y="305" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">CK</text>
+<text x="1222" y="305" font-size="13" fill="#0F172A">estado</text>
+<text x="1470" y="305" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(20)</text>
+<g filter="url(#sombra)"><rect x="40" y="440" width="300" height="128" rx="8" fill="#fff" stroke="#0F766E" stroke-width="1.5"/></g>
+<path d="M40 472 V448 a8 8 0 0 1 8 -8 H332 a8 8 0 0 1 8 8 V472 Z" fill="#0F766E"/>
+<text x="52" y="461" font-size="15" font-weight="700" fill="#fff">vacuna</text>
+<rect x="48" y="480" width="26" height="14" rx="3" fill="#CA8A04"/>
+<text x="61" y="491" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">PK</text>
+<text x="82" y="491" font-size="13" fill="#0F172A" font-weight="700">id</text>
+<text x="330" y="491" font-size="12" fill="#64748B" text-anchor="end">INT IDENTITY</text>
+<rect x="41" y="498" width="298" height="22" fill="#F1F5F9"/>
+<rect x="48" y="502" width="26" height="14" rx="3" fill="#7C3AED"/>
+<text x="61" y="513" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">UQ</text>
+<text x="82" y="513" font-size="13" fill="#0F172A">nombre</text>
+<text x="330" y="513" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(80)</text>
+<rect x="48" y="524" width="26" height="14" rx="3" fill="#7C3AED"/>
+<text x="61" y="535" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">UQ</text>
+<text x="82" y="535" font-size="13" fill="#0F172A">especie</text>
+<text x="330" y="535" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(30)</text>
+<rect x="41" y="542" width="298" height="22" fill="#F1F5F9"/>
+<rect x="48" y="546" width="26" height="14" rx="3" fill="#64748B"/>
+<text x="61" y="557" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">CK</text>
+<text x="82" y="557" font-size="13" fill="#0F172A">intervalo_dias</text>
+<text x="330" y="557" font-size="12" fill="#64748B" text-anchor="end">INT</text>
+<g filter="url(#sombra)"><rect x="420" y="440" width="300" height="194" rx="8" fill="#fff" stroke="#B45309" stroke-width="1.5"/></g>
+<path d="M420 472 V448 a8 8 0 0 1 8 -8 H712 a8 8 0 0 1 8 8 V472 Z" fill="#B45309"/>
+<text x="432" y="461" font-size="15" font-weight="700" fill="#fff">aplicacion_vacuna</text>
+<rect x="428" y="480" width="26" height="14" rx="3" fill="#CA8A04"/>
+<text x="441" y="491" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">PK</text>
+<text x="462" y="491" font-size="13" fill="#0F172A" font-weight="700">id</text>
+<text x="710" y="491" font-size="12" fill="#64748B" text-anchor="end">INT IDENTITY</text>
+<rect x="421" y="498" width="298" height="22" fill="#F1F5F9"/>
+<rect x="428" y="502" width="26" height="14" rx="3" fill="#2563EB"/>
+<text x="441" y="513" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">FK</text>
+<text x="462" y="513" font-size="13" fill="#0F172A" font-style="italic">mascota_id</text>
+<text x="710" y="513" font-size="12" fill="#64748B" text-anchor="end">INT</text>
+<rect x="428" y="524" width="26" height="14" rx="3" fill="#2563EB"/>
+<text x="441" y="535" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">FK</text>
+<text x="462" y="535" font-size="13" fill="#0F172A" font-style="italic">vacuna_id</text>
+<text x="710" y="535" font-size="12" fill="#64748B" text-anchor="end">INT</text>
+<rect x="421" y="542" width="298" height="22" fill="#F1F5F9"/>
+<rect x="428" y="546" width="26" height="14" rx="3" fill="#2563EB"/>
+<text x="441" y="557" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">FK</text>
+<text x="462" y="557" font-size="13" fill="#0F172A" font-style="italic">veterinario_id</text>
+<text x="710" y="557" font-size="12" fill="#64748B" text-anchor="end">INT</text>
+<text x="462" y="579" font-size="13" fill="#0F172A">fecha_aplicacion</text>
+<text x="710" y="579" font-size="12" fill="#64748B" text-anchor="end">DATE</text>
+<rect x="421" y="586" width="298" height="22" fill="#F1F5F9"/>
+<text x="462" y="601" font-size="13" fill="#0F172A">proxima_dosis</text>
+<text x="710" y="601" font-size="12" fill="#64748B" text-anchor="end">DATE</text>
+<text x="462" y="623" font-size="13" fill="#0F172A">lote</text>
+<text x="710" y="623" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(30)</text>
+<g filter="url(#sombra)"><rect x="800" y="440" width="300" height="172" rx="8" fill="#fff" stroke="#0F766E" stroke-width="1.5"/></g>
+<path d="M800 472 V448 a8 8 0 0 1 8 -8 H1092 a8 8 0 0 1 8 8 V472 Z" fill="#0F766E"/>
+<text x="812" y="461" font-size="15" font-weight="700" fill="#fff">veterinario</text>
+<rect x="808" y="480" width="26" height="14" rx="3" fill="#CA8A04"/>
+<text x="821" y="491" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">PK</text>
+<text x="842" y="491" font-size="13" fill="#0F172A" font-weight="700">id</text>
+<text x="1090" y="491" font-size="12" fill="#64748B" text-anchor="end">INT IDENTITY</text>
+<rect x="801" y="498" width="298" height="22" fill="#F1F5F9"/>
+<rect x="808" y="502" width="26" height="14" rx="3" fill="#2563EB"/>
+<text x="821" y="513" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">FK</text>
+<text x="842" y="513" font-size="13" fill="#0F172A" font-style="italic">usuario_id</text>
+<text x="1090" y="513" font-size="12" fill="#64748B" text-anchor="end">INT UNIQUE</text>
+<text x="842" y="535" font-size="13" fill="#0F172A">nombre</text>
+<text x="1090" y="535" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(100)</text>
+<rect x="801" y="542" width="298" height="22" fill="#F1F5F9"/>
+<rect x="808" y="546" width="26" height="14" rx="3" fill="#7C3AED"/>
+<text x="821" y="557" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">UQ</text>
+<text x="842" y="557" font-size="13" fill="#0F172A">tarjeta_profesional</text>
+<text x="1090" y="557" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(30)</text>
+<text x="842" y="579" font-size="13" fill="#0F172A">especialidad</text>
+<text x="1090" y="579" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(60)</text>
+<rect x="801" y="586" width="298" height="22" fill="#F1F5F9"/>
+<text x="842" y="601" font-size="13" fill="#0F172A">telefono</text>
+<text x="1090" y="601" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(20)</text>
+<g filter="url(#sombra)"><rect x="1180" y="440" width="300" height="194" rx="8" fill="#fff" stroke="#1E3A8A" stroke-width="1.5"/></g>
+<path d="M1180 472 V448 a8 8 0 0 1 8 -8 H1472 a8 8 0 0 1 8 8 V472 Z" fill="#1E3A8A"/>
+<text x="1192" y="461" font-size="15" font-weight="700" fill="#fff">usuario</text>
+<rect x="1188" y="480" width="26" height="14" rx="3" fill="#CA8A04"/>
+<text x="1201" y="491" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">PK</text>
+<text x="1222" y="491" font-size="13" fill="#0F172A" font-weight="700">id</text>
+<text x="1470" y="491" font-size="12" fill="#64748B" text-anchor="end">INT IDENTITY</text>
+<rect x="1181" y="498" width="298" height="22" fill="#F1F5F9"/>
+<text x="1222" y="513" font-size="13" fill="#0F172A">nombre</text>
+<text x="1470" y="513" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(100)</text>
+<rect x="1188" y="524" width="26" height="14" rx="3" fill="#7C3AED"/>
+<text x="1201" y="535" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">UQ</text>
+<text x="1222" y="535" font-size="13" fill="#0F172A">correo</text>
+<text x="1470" y="535" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(120)</text>
+<rect x="1181" y="542" width="298" height="22" fill="#F1F5F9"/>
+<text x="1222" y="557" font-size="13" fill="#0F172A">password_hash</text>
+<text x="1470" y="557" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(255)</text>
+<rect x="1188" y="568" width="26" height="14" rx="3" fill="#64748B"/>
+<text x="1201" y="579" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">CK</text>
+<text x="1222" y="579" font-size="13" fill="#0F172A">rol</text>
+<text x="1470" y="579" font-size="12" fill="#64748B" text-anchor="end">VARCHAR(20)</text>
+<rect x="1181" y="586" width="298" height="22" fill="#F1F5F9"/>
+<text x="1222" y="601" font-size="13" fill="#0F172A">activo</text>
+<text x="1470" y="601" font-size="12" fill="#64748B" text-anchor="end">BOOLEAN</text>
+<text x="1222" y="623" font-size="13" fill="#0F172A">creado_en</text>
+<text x="1470" y="623" font-size="12" fill="#64748B" text-anchor="end">TIMESTAMP</text>
+<rect x="40" y="690" width="1440" height="170" rx="8" fill="#fff" stroke="#CBD5E1"/>
+<text x="60" y="718" font-size="15" font-weight="700" fill="#0F172A">Convenciones</text>
+<rect x="60" y="729" width="26" height="14" rx="3" fill="#CA8A04"/><text x="73" y="740" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">PK</text>
+<text x="96" y="740" font-size="13" fill="#334155">Llave primaria (GENERATED ALWAYS AS IDENTITY)</text>
+<rect x="60" y="755" width="26" height="14" rx="3" fill="#2563EB"/><text x="73" y="766" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">FK</text>
+<text x="96" y="766" font-size="13" fill="#334155">Llave foránea (REFERENCES)</text>
+<rect x="60" y="781" width="26" height="14" rx="3" fill="#7C3AED"/><text x="73" y="792" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">UQ</text>
+<text x="96" y="792" font-size="13" fill="#334155">Restricción UNIQUE</text>
+<rect x="60" y="807" width="26" height="14" rx="3" fill="#64748B"/><text x="73" y="818" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">CK</text>
+<text x="96" y="818" font-size="13" fill="#334155">Restricción CHECK (validación)</text>
+<path d="M470 736 H560" stroke="#334155" stroke-width="1.6" marker-start="url(#uno)" marker-end="url(#ceroMuchos)"/>
+<text x="575" y="740" font-size="13" fill="#334155">Uno (obligatorio) a cero o muchos — 1:N</text>
+<path d="M470 772 H560" stroke="#334155" stroke-width="1.6" marker-start="url(#ceroUno)" marker-end="url(#ceroUno)"/>
+<text x="575" y="776" font-size="13" fill="#334155">Cero o uno a cero o uno — 1:1 opcional</text>
+<rect x="470" y="796" width="20" height="14" rx="3" fill="#B45309"/><text x="500" y="808" font-size="13" fill="#334155">Tabla intermedia que resuelve la relación N:M mascota ↔ vacuna</text>
+<rect x="470" y="822" width="20" height="14" rx="3" fill="#1E3A8A"/><text x="500" y="834" font-size="13" fill="#334155">Tabla de seguridad (autenticación y roles)</text>
+<text x="1010" y="740" font-size="13" font-weight="700" fill="#0F172A">Reglas en la base de datos</text>
+<text x="1010" y="764" font-size="12.5" fill="#334155">• RN-02: propietario → mascota ON DELETE RESTRICT</text>
+<text x="1010" y="786" font-size="12.5" fill="#334155">• RN-03: UNIQUE (veterinario_id, fecha) en consulta</text>
+<text x="1010" y="808" font-size="12.5" fill="#334155">• RN-01: CHECK (proxima_dosis > fecha_aplicacion)</text>
+<text x="1010" y="830" font-size="12.5" fill="#334155">• Tratamiento: CHECK (fecha_fin >= fecha_inicio)</text>
+</svg>
