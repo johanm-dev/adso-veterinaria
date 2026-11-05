@@ -77,78 +77,88 @@ Actualmente, el Centro Veterinario opera bajo una metodología híbrida semi-man
 
 ## 5. Formato de Observación Directa
 
-| Campo | Registro / Detalle |
-|---|---|
-| **Fecha de observación:** | 4 de Noviembre de 2026 (Horario: 9:00 a. m. a 12:30 p. m. - Jornada pico) |
-| **Lugar:** | Recepción y Sala de Espera del Centro Veterinario San Roque |
-| **Observador:** | Johan Muñoz |
-| **Actividad observada 1:** | Ingreso de paciente canino para consulta general de urgencia por vómito. |
-| **Problema detectado 1:** | La auxiliar tardó 7 minutos buscando la carpeta física en el archivo rodante. Mientras tanto, el cliente se impacientaba y la sala de espera se congestionó con dos pacientes más. |
-| **Oportunidad 1:** | Implementar un buscador digital en tiempo real que permita ubicar el paciente en menos de 2 segundos mediante su nombre o el documento de identidad de su propietario. |
-| **Actividad observada 2:** | Propietario solicita información sobre la vacuna antirrábica que le aplicaron hace un año porque perdió el carné. |
-| **Problema detectado 2:** | No hubo forma rápida de certificar la fecha ni el lote de la vacuna aplicada sin revisar hoja por hoja las notas manuscritas del año anterior. |
-| **Oportunidad 2:** | Creación de un historial digital de vacunación que calcule de forma automática la próxima dosis requerida y conserve el registro del lote. |
-| **Actividad observada 3:** | Cruce de citas a las 11:30 a. m. entre dos clientes citados con el mismo médico veterinario. |
-| **Problema detectado 3:** | Ambos clientes tenían agendada cita a la misma hora en la libreta física de recepción. Uno de ellos tuvo que esperar 45 minutos adicionales. |
-| **Oportunidad 3:** | Restricción lógica en base de datos que impida asignar dos consultas médicas al mismo profesional en idéntico horario. |
+| Fecha | Lugar | Actividad observada | Problema detectado | Oportunidad |
+|---|---|---|---|---|
+| 04/11/2026 | Recepción | Búsqueda de historial de paciente canino para consulta de urgencia. | La recepcionista tardó 7 minutos buscando la carpeta física en el archivador rodante, retrasando la atención y congestionando la sala de espera. | Implementar un buscador digital en tiempo real por documento del dueño o nombre de la mascota con respuesta menor a 3 segundos. |
+| 04/11/2026 | Mostrador | Propietario solicitando duplicado de fecha de vacuna antirrábica por extravío de carné. | Imposible certificar fecha y lote sin revisar manualmente página por página las hojas de consulta manuscritas del año anterior. | Módulo digital de vacunación que mantenga el histórico de aplicaciones con sus lotes y calcule la próxima dosis de forma automática. |
+| 04/11/2026 | Consultorio 1 | Llegada de dos clientes citados a las 11:30 a. m. con el mismo médico veterinario. | Cruce de citas por registro simultáneo en la libreta física de agendamiento; un cliente esperó 45 minutos adicionales. | Validación a nivel de base de datos que impida asignar dos citas al mismo veterinario en idéntica fecha y hora (`UNIQUE`). |
 
 ---
 
-## 6. Encuesta a Clientes / Propietarios de Mascotas
+## 6. Encuesta a Clientes / Propietarios de Mascotas (Datos Reales)
 
-### Ficha Técnica de la Encuesta:
-- **Población objetivo:** Propietarios de caninos y felinos que asisten al centro veterinario.
-- **Muestra aplicada:** 25 propietarios encuestados de forma presencial y mediante formulario virtual.
-- **Tipo de preguntas:** Cerradas (opción múltiple y dicotómicas Sí/No).
+### Ficha Técnica del Instrumento:
+- **Población / Muestra:** 18 propietarios de mascotas encuestados mediante formulario estructurado.
+- **Fecha de aplicación:** 5 de Noviembre de 2026 (14:49:04 a 14:55:33).
+- **Tipo de preguntas:** Cerradas (opción múltiple, dicotómicas y escalas Likert).
 
-### Cuestionario y Tabulación de Resultados (25 encuestados = 100%):
+### Tabulación de Respuestas (18 encuestados = 100%):
 
-1. **¿Ha olvidado o retrasado alguna vez la fecha de vacunación o desparasitación de su mascota?**
-   - Sí: 19 personas (**76%**)
-   - No: 6 personas (**24%**)
-   *Interpretación:* Más de 3 cuartas partes de los usuarios olvidan las fechas críticas de inmunización por falta de recordación activa.
+#### Pregunta 1: ¿Ha olvidado o retrasado alguna vez la fecha de vacunación o desparasitación de su mascota?
+| Opción de Respuesta | Frecuencia Absoluta | Frecuencia Relativa (%) |
+|---|:---:|:---:|
+| **Sí** | 14 | **77.8%** |
+| **No** | 4 | **22.2%** |
+| **Total** | **18** | **100.0%** |
+*Análisis:* Más de tres cuartas partes (77.8%) de los dueños admite haber retrasado esquemas preventivos por falta de recordación activa.
 
-2. **¿Conserva usted en buen estado el carné de vacunación físico de su mascota?**
-   - Sí, siempre: 8 personas (**32%**)
-   - Lo pierdo o daño con frecuencia: 11 personas (**44%**)
-   - No sé dónde está actualmente: 6 personas (**24%**)
-   *Interpretación:* El 68% de los propietarios no cuenta con el soporte físico confiable en el momento de una consulta o viaje.
+#### Pregunta 2: ¿Conserva usted en buen estado el carné de vacunación físico de su mascota?
+| Opción de Respuesta | Frecuencia Absoluta | Frecuencia Relativa (%) |
+|---|:---:|:---:|
+| **Lo pierdo o daño con frecuencia** | 5 | **27.8%** |
+| **No sé dónde está** | 5 | **27.8%** |
+| **Sí, siempre** | 5 | **27.8%** |
+| **No, nunca** | 3 | **16.7%** |
+| **Total** | **18** | **100.0%** |
+*Análisis:* El **72.2%** de los clientes (13 de 18) no conserva o extravía el carné físico, dejando desprotegido el historial de vacunación ante emergencias o viajes.
 
-3. **¿Le gustaría recibir notificaciones o recordatorios automáticos (ej. vía WhatsApp) días antes del vencimiento de una vacuna o control médico?**
-   - Sí, definitivamente: 24 personas (**96%**)
-   - No me interesa: 1 persona (**4%**)
-   *Interpretación:* Existe una necesidad y aprobación casi unánime (96%) para la funcionalidad de alertas automáticas.
+#### Pregunta 3: ¿Le gustaría recibir recordatorios automáticos días antes del vencimiento de una vacuna o control médico?
+| Opción de Respuesta | Frecuencia Absoluta | Frecuencia Relativa (%) |
+|---|:---:|:---:|
+| **Definitivamente** | 9 | **50.0%** |
+| **Sí** | 7 | **38.9%** |
+| **No** | 2 | **11.1%** |
+| **Total** | **18** | **100.0%** |
+*Análisis:* El **88.9%** de los encuestados demanda un sistema automatizado de notificaciones previas para controles y vacunas.
 
-4. **¿Cuál considera que es el canal más cómodo y efectivo para recibir dichos avisos?**
-   - Mensaje de WhatsApp: 21 personas (**84%**)
-   - Correo electrónico: 3 personas (**12%**)
-   - Llamada telefónica tradicional: 1 persona (**4%**)
-   *Interpretación:* WhatsApp es el canal preferido por los dueños de mascotas.
+#### Pregunta 4: ¿Por cuál canal preferiría recibir dichos recordatorios?
+| Opción de Respuesta | Frecuencia Absoluta | Frecuencia Relativa (%) |
+|---|:---:|:---:|
+| **Correo electrónico** | 11 | **61.1%** |
+| **Mensaje de WhatsApp** | 5 | **27.8%** |
+| **Llamada telefónica** | 2 | **11.1%** |
+| **Total** | **18** | **100.0%** |
+*Análisis:* El correo electrónico lidera las preferencias de notificación formal con 61.1%, seguido por mensajería instantánea de WhatsApp con 27.8%.
 
-5. **Cuando acude a la veterinaria, ¿cuánto tiempo considera que tarda la atención en recepción para ubicar el historial de su mascota?**
-   - Menos de 2 minutos: 4 personas (**16%**)
-   - Entre 5 y 10 minutos: 16 personas (**64%**)
-   - Más de 10 minutos: 5 personas (**20%**)
-   *Interpretación:* El 84% percibe tiempos de espera superiores a 5 minutos únicamente en la fase de localización de registros.
+#### Pregunta 5: En recepción, ¿cuánto tiempo considera que tardan en ubicar los datos requeridos para su mascota?
+| Opción de Respuesta | Frecuencia Absoluta | Frecuencia Relativa (%) |
+|---|:---:|:---:|
+| **Más de 10 minutos** | 8 | **44.4%** |
+| **Entre 5 y 10 minutos** | 7 | **38.9%** |
+| **Menos de 2 minutos** | 3 | **16.7%** |
+| **Total** | **18** | **100.0%** |
+*Análisis:* El **83.3%** de los usuarios experimenta demoras críticas superiores a 5 minutos (con casi la mitad superando los 10 minutos) sólo en la localización de expedientes.
 
-6. **¿Le gustaría que su médico veterinario tenga acceso inmediato al historial clínico completo de su mascota en pantalla?**
-   - Totalmente de acuerdo: 25 personas (**100%**)
-   - En desacuerdo: 0 personas (**0%**)
-   *Interpretación:* Unanimidad total respecto a la importancia de la digitalización de la historia clínica.
+#### Pregunta 6: ¿Considera importante que su veterinario pueda ver el historial médico completo de su mascota en una pantalla?
+| Opción de Respuesta | Frecuencia Absoluta | Frecuencia Relativa (%) |
+|---|:---:|:---:|
+| **Totalmente de acuerdo** | 16 | **88.9%** |
+| **En desacuerdo** | 2 | **11.1%** |
+| **Total** | **18** | **100.0%** |
+*Análisis:* Amplio consenso positivo (88.9%) que respalda la necesidad de contar con historial clínico digital durante el acto médico.
 
 ---
 
-## 7. Oportunidades de Mejora Identificadas
+## 7. Oportunidades de Mejora del Negocio (Sustentadas en Datos Reales)
 
-Con base en la triangulación de la entrevista al director, la observación directa y la encuesta a los 25 clientes, se definen las siguientes **5 oportunidades de mejora prioritarias** que justifican y delimitan el sistema **Veterinaria Digital**:
+1. **Reducción radical de tiempos de espera en recepción (Acceso digital en < 3 s):**  
+   Frente al **83.3%** de propietarios que reporta esperas de más de 5 a 10 minutos para ubicar datos, el software debe incorporar un motor de búsqueda instantáneo por cédula del dueño o nombre de la mascota, reemplazando de raíz el archivo físico.
 
-1. **Centralización y Digitalización del Historial Clínico:**  
-   Reemplazar el archivo físico en papel por un repositorio digital bajo arquitectura MVC con PostgreSQL, permitiendo consultar antecedentes, diagnósticos y tratamientos de cualquier mascota en menos de 3 segundos mediante búsqueda por nombre o documento del dueño.
-2. **Sistema Automatizado de Alertas de Vacunación y Controles (Funcionalidad Innovadora):**  
-   Implementar una lógica de negocio y vistas en base de datos (`v_alertas_vacunas` y `v_alertas_controles`) que detecten automáticamente las vacunas y revisiones que vencen en los próximos 7 días, habilitando un enlace con un solo clic para notificar al propietario a través de WhatsApp.
-3. **Cálculo Preciso de Próxima Dosis según Intervalo Farmacológico:**  
-   Eliminar el error humano en el agendamiento calculando la próxima fecha de aplicación automáticamente a partir del catálogo de vacunas (ej. 365 días para rabia/moquillo, 90 días para desparasitaciones), asegurando la integridad del calendario preventivo.
-4. **Control de Restricciones y Reglas de Integridad Médica:**  
-   Establecer reglas a nivel de base de datos que impidan registrar dos consultas al mismo médico en idéntica fecha y hora (`UNIQUE`), así como evitar la eliminación accidental de dueños que tengan mascotas con historial activo (`ON DELETE RESTRICT`).
-5. **Dashboard Gerencial y Reportes Automatizados en Tiempo Real:**  
-   Sustituir el conteo manual de recibos a fin de mes por un panel con indicadores clave (KPIs), gráficas de consultas por mes y reportes con filtro de fechas exportables a formato CSV (Excel) para el control transparente de ingresos y rendimiento veterinario.
+2. **Módulo automatizado de alertas de vacunación y controles pendientes:**  
+   Dado que el **77.8%** olvida las fechas de vacunación y el **88.9%** exige recordatorios previos, el sistema implementará alertas visuales automáticas calculadas según el calendario de dosis (7 días antes y vencidas), facilitando el contacto multicanal (correo y WhatsApp).
+
+3. **Digitalización integral del carné de vacunación y trazabilidad de biológicos:**  
+   El **72.2%** de los clientes extravía o deteriora el carné de papel. El sistema garantizará un registro histórico permanente de cada aplicación, veterinario responsable, lote del biológico y cálculo automático de la próxima dosis según el intervalo en días (Regla RN-01).
+
+4. **Expediente clínico unificado en pantalla para el profesional tratante:**  
+   Respaldado por el **88.9%** de aprobación, el veterinario dispondrá en pantalla de antecedentes, consultas pasadas, diagnósticos y tratamientos vigentes en tiempo real, mejorando la calidad del diagnóstico clínico.
