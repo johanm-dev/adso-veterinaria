@@ -1,0 +1,122 @@
+{
+  "version": "1.0",
+  "name": "Veterinaria Digital",
+  "database": "veterinaria",
+  "dialect": "postgresql",
+  "schemas": [
+    {
+      "name": "public",
+      "tables": [
+        {
+          "name": "usuario",
+          "columns": [
+            { "name": "id", "type": "int", "pk": true, "identity": true },
+            { "name": "nombre", "type": "varchar(100)", "nullable": false },
+            { "name": "correo", "type": "varchar(120)", "unique": true, "nullable": false },
+            { "name": "password_hash", "type": "varchar(255)", "nullable": false },
+            { "name": "rol", "type": "varchar(20)", "check": "rol IN ('admin','veterinario','recepcion')" },
+            { "name": "activo", "type": "boolean", "default": true },
+            { "name": "creado_en", "type": "timestamp", "default": "CURRENT_TIMESTAMP" }
+          ]
+        },
+        {
+          "name": "veterinario",
+          "columns": [
+            { "name": "id", "type": "int", "pk": true, "identity": true },
+            { "name": "usuario_id", "type": "int", "unique": true, "fk": { "table": "usuario", "column": "id", "onDelete": "SET NULL" } },
+            { "name": "nombre", "type": "varchar(100)", "nullable": false },
+            { "name": "tarjeta_profesional", "type": "varchar(30)", "unique": true, "nullable": false },
+            { "name": "especialidad", "type": "varchar(60)" },
+            { "name": "telefono", "type": "varchar(20)" }
+          ]
+        },
+        {
+          "name": "propietario",
+          "columns": [
+            { "name": "id", "type": "int", "pk": true, "identity": true },
+            { "name": "documento", "type": "varchar(20)", "unique": true, "nullable": false },
+            { "name": "nombres", "type": "varchar(80)", "nullable": false },
+            { "name": "apellidos", "type": "varchar(80)", "nullable": false },
+            { "name": "telefono", "type": "varchar(20)", "nullable": false },
+            { "name": "correo", "type": "varchar(120)" },
+            { "name": "direccion", "type": "varchar(150)" },
+            { "name": "creado_en", "type": "timestamp", "default": "CURRENT_TIMESTAMP" }
+          ]
+        },
+        {
+          "name": "mascota",
+          "columns": [
+            { "name": "id", "type": "int", "pk": true, "identity": true },
+            { "name": "propietario_id", "type": "int", "fk": { "table": "propietario", "column": "id", "onDelete": "RESTRICT" } },
+            { "name": "nombre", "type": "varchar(60)", "nullable": false },
+            { "name": "especie", "type": "varchar(30)", "check": "especie IN ('Perro','Gato','Ave','Conejo','Otro')" },
+            { "name": "raza", "type": "varchar(60)" },
+            { "name": "sexo", "type": "char(1)", "check": "sexo IN ('M','H')" },
+            { "name": "fecha_nacimiento", "type": "date" },
+            { "name": "peso_kg", "type": "numeric(6,2)", "check": "peso_kg > 0" },
+            { "name": "activo", "type": "boolean", "default": true }
+          ]
+        },
+        {
+          "name": "vacuna",
+          "columns": [
+            { "name": "id", "type": "int", "pk": true, "identity": true },
+            { "name": "nombre", "type": "varchar(80)", "nullable": false },
+            { "name": "especie", "type": "varchar(30)", "nullable": false },
+            { "name": "intervalo_dias", "type": "int", "check": "intervalo_dias > 0" }
+          ],
+          "constraints": [
+            { "name": "uq_vacuna", "type": "UNIQUE", "columns": ["nombre", "especie"] }
+          ]
+        },
+        {
+          "name": "consulta",
+          "columns": [
+            { "name": "id", "type": "int", "pk": true, "identity": true },
+            { "name": "mascota_id", "type": "int", "fk": { "table": "mascota", "column": "id", "onDelete": "RESTRICT" } },
+            { "name": "veterinario_id", "type": "int", "fk": { "table": "veterinario", "column": "id", "onDelete": "RESTRICT" } },
+            { "name": "fecha", "type": "timestamp", "nullable": false },
+            { "name": "motivo", "type": "varchar(200)", "nullable": false },
+            { "name": "diagnostico", "type": "text" },
+            { "name": "costo", "type": "numeric(10,2)", "default": 0, "check": "costo >= 0" },
+            { "name": "proximo_control", "type": "date" }
+          ],
+          "constraints": [
+            { "name": "uq_veterinario_fecha", "type": "UNIQUE", "columns": ["veterinario_id", "fecha"] }
+          ]
+        },
+        {
+          "name": "aplicacion_vacuna",
+          "columns": [
+            { "name": "id", "type": "int", "pk": true, "identity": true },
+            { "name": "mascota_id", "type": "int", "fk": { "table": "mascota", "column": "id", "onDelete": "CASCADE" } },
+            { "name": "vacuna_id", "type": "int", "fk": { "table": "vacuna", "column": "id", "onDelete": "RESTRICT" } },
+            { "name": "veterinario_id", "type": "int", "fk": { "table": "veterinario", "column": "id", "onDelete": "RESTRICT" } },
+            { "name": "fecha_aplicacion", "type": "date", "nullable": false },
+            { "name": "proxima_dosis", "type": "date", "nullable": false },
+            { "name": "lote", "type": "varchar(30)" }
+          ],
+          "checks": [
+            "proxima_dosis > fecha_aplicacion"
+          ]
+        },
+        {
+          "name": "tratamiento",
+          "columns": [
+            { "name": "id", "type": "int", "pk": true, "identity": true },
+            { "name": "consulta_id", "type": "int", "fk": { "table": "consulta", "column": "id", "onDelete": "CASCADE" } },
+            { "name": "medicamento", "type": "varchar(100)", "nullable": false },
+            { "name": "dosis", "type": "varchar(60)", "nullable": false },
+            { "name": "frecuencia", "type": "varchar(60)", "nullable": false },
+            { "name": "fecha_inicio", "type": "date", "nullable": false },
+            { "name": "fecha_fin", "type": "date" },
+            { "name": "estado", "type": "varchar(20)", "default": "En curso", "check": "estado IN ('En curso','Finalizado','Suspendido')" }
+          ],
+          "checks": [
+            "fecha_fin IS NULL OR fecha_fin >= fecha_inicio"
+          ]
+        }
+      ]
+    }
+  ]
+}
