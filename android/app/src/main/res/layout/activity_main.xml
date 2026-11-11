@@ -24,7 +24,7 @@
 
     <LinearLayout
         android:id="@+id/layoutError"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
@@ -37,24 +37,42 @@
             android:layout_height="wrap_content"
             android:text="¡Sin conexión con el servidor!"
             android:textColor="#DC3545"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvErrorDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Asegúrate de que Apache en XAMPP esté encendido y que el celular esté en la misma red Wi-Fi."
-            android:textColor="#6C757D"
+            android:text="1. Enciende Apache en XAMPP en tu PC.\n2. Conecta tu celular y PC al mismo Wi-Fi.\n3. Verifica que la IP del PC coincida aquí abajo:"
+            android:textColor="#495057"
             android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/etIpServidor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@android:drawable/edit_text"
+            android:gravity="center"
+            android:hint="Ej: 192.168.137.6"
+            android:inputType="textUri"
+            android:padding="12dp"
+            android:singleLine="true"
+            android:textColor="#212529"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnReintentar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Reintentar Conexión" />
+            android:layout_marginTop="14dp"
+            android:backgroundTint="#0D6EFD"
+            android:padding="12dp"
+            android:text="Guardar IP y Reintentar Conexión"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 </RelativeLayout>

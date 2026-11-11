@@ -3,9 +3,12 @@ package com.sena.veterinaria;
 import android.app.Activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
@@ -14,19 +17,36 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-    // Servidor local accesible por Wi-Fi
-    private static final String SERVER_URL = "http://10.1.174.177/veterinaria";
+    private static final String PREFS_NAME = "VetPrefs";
+    private static final String KEY_SERVER_IP = "server_ip";
+    private static final String DEFAULT_SERVER_IP = "192.168.137.6";
+    private static final int LOAD_TIMEOUT_MS = 10000;
 
     private WebView webView;
     private ProgressBar progressBar;
     private LinearLayout layoutError;
+    private EditText etIpServidor;
     private Button btnReintentar;
+
+    private final Handler timeoutHandler = new Handler(Looper.getMainLooper());
+    private boolean pageLoaded = false;
+
+    private final Runnable timeoutRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (!pageLoaded) {
+                webView.stopLoading();
+                mostrarErrorConexion();
+            }
+        }
+    };
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -37,9 +57,9 @@ public class MainActivity extends Activity {
         webView = (WebView) findViewById(R.id.webView);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         layoutError = (LinearLayout) findViewById(R.id.layoutError);
+        etIpServidor = (EditText) findViewById(R.id.etIpServidor);
         btnReintentar = (Button) findViewById(R.id.btnReintentar);
 
-        // Configuración óptima de WebView
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
@@ -54,7 +74,6 @@ public class MainActivity extends Activity {
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 String url = request.getUrl().toString();
 
-                // Abrir WhatsApp directamente en la app oficial de Android
                 if (url.startsWith("https://api.whatsapp.com") || url.startsWith("whatsapp:") || url.startsWith("tel:")) {
                     try {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -73,13 +92,19 @@ public class MainActivity extends Activity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
+                pageLoaded = false;
                 layoutError.setVisibility(View.GONE);
+                webView.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.VISIBLE);
+                timeoutHandler.removeCallbacks(timeoutRunnable);
+                timeoutHandler.postDelayed(timeoutRunnable, LOAD_TIMEOUT_MS);
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                pageLoaded = true;
+                timeoutHandler.removeCallbacks(timeoutRunnable);
                 progressBar.setVisibility(View.GONE);
             }
 
@@ -87,8 +112,9 @@ public class MainActivity extends Activity {
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
                 if (request.isForMainFrame()) {
-                    layoutError.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.GONE);
+                    pageLoaded = true;
+                    timeoutHandler.removeCallbacks(timeoutRunnable);
+                    mostrarErrorConexion();
                 }
             }
         });
@@ -96,7 +122,7 @@ public class MainActivity extends Activity {
         webView.setWebChromeClient(new WebChromeClient() {
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
-                if (newProgress < 100) {
+                if (newProgress < 100 && layoutError.getVisibility() != View.VISIBLE) {
                     progressBar.setVisibility(View.VISIBLE);
                     progressBar.setProgress(newProgress);
                 } else {
@@ -107,17 +133,60 @@ public class MainActivity extends Activity {
 
         btnReintentar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                layoutError.setVisibility(View.GONE);
-                webView.loadUrl(SERVER_URL);
+                String nuevaIp = etIpServidor.getText().toString().trim();
+                if (nuevaIp.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Ingresa la IP de tu PC", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                guardarIpServidor(nuevaIp);
+                cargarServidor();
             }
         });
 
-        webView.loadUrl(SERVER_URL);
+        cargarServidor();
+    }
+
+    private String obtenerIpGuardada() {
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        return prefs.getString(KEY_SERVER_IP, DEFAULT_SERVER_IP);
+    }
+
+    private void guardarIpServidor(String ip) {
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        prefs.edit().putString(KEY_SERVER_IP, ip).apply();
+    }
+
+    private String construirUrl(String ipOUrl) {
+        if (ipOUrl.startsWith("http://") || ipOUrl.startsWith("https://")) {
+            return ipOUrl;
+        }
+        return "http://" + ipOUrl + "/veterinaria";
+    }
+
+    private void cargarServidor() {
+        String ip = obtenerIpGuardada();
+        etIpServidor.setText(ip);
+        layoutError.setVisibility(View.GONE);
+        webView.setVisibility(View.VISIBLE);
+        webView.loadUrl(construirUrl(ip));
+    }
+
+    private void mostrarErrorConexion() {
+        progressBar.setVisibility(View.GONE);
+        webView.setVisibility(View.GONE);
+        etIpServidor.setText(obtenerIpGuardada());
+        layoutError.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    protected void onDestroy() {
+        timeoutHandler.removeCallbacks(timeoutRunnable);
+        super.onDestroy();
     }
 
     @Override
     public void onBackPressed() {
-        if (webView.canGoBack()) {
+        if (webView.getVisibility() == View.VISIBLE && webView.canGoBack()) {
             webView.goBack();
         } else {
             super.onBackPressed();
