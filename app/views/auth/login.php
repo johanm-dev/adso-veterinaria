@@ -17,7 +17,7 @@
                         <label for="email" class="form-label fw-semibold">Correo Electrónico</label>
                         <div class="input-group">
                             <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="admin@veterinaria.com" required autofocus>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="admin@vet.com" required autofocus>
                         </div>
                     </div>
 
@@ -36,8 +36,9 @@
 
                 <div class="mt-4 pt-3 border-top text-center text-muted small">
                     <strong>Cuentas de prueba:</strong><br>
-                    <code>admin@veterinaria.com</code> / <code>Admin123*</code><br>
-                    <code>carlos.mendoza@veterinaria.com</code> / <code>Admin123*</code>
+                    <code>admin@vet.com</code> / <code>Admin123*</code><br>
+                    <code>laura@vet.com</code> / <code>Admin123*</code><br>
+                    <code>sara@vet.com</code> / <code>Admin123*</code>
                 </div>
             </div>
         </div>

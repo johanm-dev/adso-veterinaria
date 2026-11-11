@@ -152,10 +152,11 @@ Todas las cuentas tienen por contraseña predeterminada: **`Admin123*`**
 
 | Nombre | Correo Electrónico | Rol | Permisos |
 |---|---|---|---|
-| **Johan Muñoz** | `admin@veterinaria.com` | `admin` | Acceso total a todos los módulos y administración |
-| **Dr. Carlos Mendoza** | `carlos.mendoza@veterinaria.com` | `veterinario` | Atención clínica, prescripción y vacunación |
-| **Dra. Andrea Morales** | `andrea.morales@veterinaria.com` | `veterinario` | Atención clínica y expedientes de pacientes |
-| **Mariana López** | `mariana.lopez@veterinaria.com` | `recepcion` | Registro de propietarios, citas y alertas |
+| **Administrador General** | `admin@vet.com` | `admin` | Acceso total a todos los módulos y administración |
+| **Dra. Laura Gómez** | `laura@vet.com` | `veterinario` | Atención clínica, prescripción y vacunación |
+| **Dr. Andrés Ruiz** | `andres@vet.com` | `veterinario` | Atención clínica y expedientes de pacientes |
+| **Sara Díaz** | `sara@vet.com` | `recepcion` | Registro de propietarios, citas y alertas |
+| **Pedro León** | `pedro@vet.com` | `recepcion` | Registro de propietarios, citas y alertas |
 
 ---
 

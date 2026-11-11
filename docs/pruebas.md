@@ -28,8 +28,8 @@
 
 | ID Caso | Módulo | Requisito / Regla | Descripción del Escenario | Datos de Entrada | Resultado Esperado | Resultado Obtenido | Estado |
 |---|---|---|---|---|---|---|---|
-| **CP-01** | Autenticación | RF-01 / RNF-01 | Login con credenciales válidas de Administrador | `admin@veterinaria.com`, `Admin123*` | Autenticación exitosa, regeneración de Session ID, redirección a `/dashboard` con mensaje de bienvenida. | Acceso concedido al Dashboard con sesión activa. | **APROBADO** |
-| **CP-02** | Autenticación | RF-01 / RNF-01 | Login con contraseña errónea | `admin@veterinaria.com`, `ClaveInvalida999` | Rechazo de login, mensaje flash "Credenciales inválidas", permanencia en vista login. | Mensaje de error visible, no se genera sesión. | **APROBADO** |
+| **CP-01** | Autenticación | RF-01 / RNF-01 | Login con credenciales válidas de Administrador | `admin@vet.com`, `Admin123*` | Autenticación exitosa, regeneración de Session ID, redirección a `/dashboard` con mensaje de bienvenida. | Acceso concedido al Dashboard con sesión activa. | **APROBADO** |
+| **CP-02** | Autenticación | RF-01 / RNF-01 | Login con contraseña errónea | `admin@vet.com`, `ClaveInvalida999` | Rechazo de login, mensaje flash "Credenciales inválidas", permanencia en vista login. | Mensaje de error visible, no se genera sesión. | **APROBADO** |
 | **CP-03** | Seguridad | RNF-02 | Verificación de protección contra ataques CSRF | Petición POST sin token `csrf_token` o token alterado | HTTP 403 Forbidden y detención inmediata del procesamiento. | Solicitud bloqueada con código 403. | **APROBADO** |
 | **CP-04** | Seguridad | RNF-03 | Sanitización de entradas contra Cross-Site Scripting (XSS) | `<script>alert('pwned');</script>` | Helper `e()` transforma caracteres especiales a entidades HTML seguras. | Caracteres neutralizados sin ejecución de scripts. | **APROBADO** |
 | **CP-05** | Reglas Negocio | RN-01 | Cálculo automático de próxima dosis de vacunación | Fecha: `2026-06-01`, Vacuna: Rabia (intervalo 365 días) | Próxima dosis calculada en `2027-06-01` automáticamente sin intervención manual. | Próxima dosis registrada exactamente en `2027-06-01`. | **APROBADO** |
