@@ -1,5 +1,6 @@
 package com.sena.veterinaria;
 
+import android.app.Activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,19 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+public class MainActivity extends Activity {
 
-public class MainActivity extends AppCompatActivity {
-
-    // Configuración de URL del servidor
-    // Para emulador de Android Studio: "http://10.0.2.2/veterinaria"
-    // Para teléfono físico en la misma red Wi-Fi: "http://10.1.174.177/veterinaria"
-    private static final String DEFAULT_URL = "http://10.0.2.2/veterinaria";
-    private static final String WIFI_URL = "http://10.1.174.177/veterinaria";
+    // Servidor local accesible por Wi-Fi
+    private static final String SERVER_URL = "http://10.1.174.177/veterinaria";
 
     private WebView webView;
-    private SwipeRefreshLayout swipeRefresh;
     private ProgressBar progressBar;
     private LinearLayout layoutError;
     private Button btnReintentar;
@@ -40,13 +34,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        webView = findViewById(R.id.webView);
-        swipeRefresh = findViewById(R.id.swipeRefresh);
-        progressBar = findViewById(R.id.progressBar);
-        layoutError = findViewById(R.id.layoutError);
-        btnReintentar = findViewById(R.id.btnReintentar);
+        webView = (WebView) findViewById(R.id.webView);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        layoutError = (LinearLayout) findViewById(R.id.layoutError);
+        btnReintentar = (Button) findViewById(R.id.btnReintentar);
 
-        // Configuración del WebView
+        // Configuración óptima de WebView
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
@@ -56,25 +49,23 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setSupportZoom(false);
         webSettings.setBuiltInZoomControls(false);
 
-        // Cliente para interceptar navegación y enlaces a WhatsApp
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 String url = request.getUrl().toString();
 
-                // Si el enlace es de WhatsApp o tel, abrir con la aplicación nativa de Android
+                // Abrir WhatsApp directamente en la app oficial de Android
                 if (url.startsWith("https://api.whatsapp.com") || url.startsWith("whatsapp:") || url.startsWith("tel:")) {
                     try {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                         startActivity(intent);
                         return true;
                     } catch (Exception e) {
-                        Toast.makeText(MainActivity.this, "No se encontró la aplicación requerida", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "No se encontró la aplicación para abrir el enlace", Toast.LENGTH_SHORT).show();
                         return true;
                     }
                 }
 
-                // Cargar páginas internas dentro del WebView
                 view.loadUrl(url);
                 return true;
             }
@@ -90,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 progressBar.setVisibility(View.GONE);
-                swipeRefresh.setRefreshing(false);
             }
 
             @Override
@@ -103,10 +93,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Barra de progreso interactiva
         webView.setWebChromeClient(new WebChromeClient() {
-            @Override
-            public void progressChanged(WebView view, int newProgress) {
+            public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
                 if (newProgress < 100) {
                     progressBar.setVisibility(View.VISIBLE);
                     progressBar.setProgress(newProgress);
@@ -116,24 +105,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Swipe para recargar la página (Pull to refresh)
-        swipeRefresh.setOnRefreshListener(() -> webView.reload());
-
-        // Botón de reintentar si se pierde conexión
-        btnReintentar.setOnClickListener(v -> {
-            layoutError.setVisibility(View.GONE);
-            cargarUrlInicial();
+        btnReintentar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                layoutError.setVisibility(View.GONE);
+                webView.loadUrl(SERVER_URL);
+            }
         });
 
-        cargarUrlInicial();
+        webView.loadUrl(SERVER_URL);
     }
 
-    private void cargarUrlInicial() {
-        // Primero intenta con la IP WiFi local, y si estás en emulador o falla puedes alternar
-        webView.loadUrl(WIFI_URL);
-    }
-
-    // Manejar botón Atrás de Android para navegar por el historial del WebView
     @Override
     public void onBackPressed() {
         if (webView.canGoBack()) {
