@@ -6,7 +6,7 @@
                 <p class="text-muted small">Actualice la información de contacto de <?= e($propietario['nombre_completo']) ?></p>
             </div>
             <a href="index.php?action=propietarios" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left me-1"></i> Volver
+                <i class="fa-solid fa-arrow-left me-1"></i> Volver
             </a>
         </div>
 
@@ -53,7 +53,7 @@
                     <div class="d-flex justify-content-end gap-2">
                         <a href="index.php?action=propietarios" class="btn btn-light border">Cancelar</a>
                         <button type="submit" class="btn btn-primary px-4">
-                            <i class="bi bi-check-lg me-1"></i> Actualizar Cambios
+                            <i class="fa-solid fa-check me-1"></i> Actualizar Cambios
                         </button>
                     </div>
                 </form>

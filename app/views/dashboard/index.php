@@ -5,10 +5,10 @@
     </div>
     <div>
         <a href="index.php?action=consultas_create" class="btn btn-primary shadow-sm me-2">
-            <i class="bi bi-plus-circle me-1"></i> Nueva Consulta
+            <i class="fa-solid fa-circle-plus me-1"></i> Nueva Consulta
         </a>
         <a href="index.php?action=mascotas_create" class="btn btn-outline-primary shadow-sm">
-            <i class="bi bi-plus-lg me-1"></i> Registrar Mascota
+            <i class="fa-solid fa-plus me-1"></i> Registrar Mascota
         </a>
     </div>
 </div>
@@ -19,7 +19,7 @@
         <div class="card border-0 shadow-sm rounded-3">
             <div class="card-body d-flex align-items-center">
                 <div class="bg-primary-subtle text-primary p-3 rounded-3 me-3 fs-3">
-                    <i class="bi bi-github"></i>
+                    <i class="fa-solid fa-paw"></i>
                 </div>
                 <div>
                     <h6 class="text-muted text-uppercase fw-semibold mb-1 small">Pacientes Activos</h6>
@@ -32,7 +32,7 @@
         <div class="card border-0 shadow-sm rounded-3">
             <div class="card-body d-flex align-items-center">
                 <div class="bg-info-subtle text-info p-3 rounded-3 me-3 fs-3">
-                    <i class="bi bi-people"></i>
+                    <i class="fa-solid fa-users"></i>
                 </div>
                 <div>
                     <h6 class="text-muted text-uppercase fw-semibold mb-1 small">Propietarios</h6>
@@ -45,7 +45,7 @@
         <div class="card border-0 shadow-sm rounded-3">
             <div class="card-body d-flex align-items-center">
                 <div class="bg-success-subtle text-success p-3 rounded-3 me-3 fs-3">
-                    <i class="bi bi-clipboard2-check"></i>
+                    <i class="fa-solid fa-stethoscope"></i>
                 </div>
                 <div>
                     <h6 class="text-muted text-uppercase fw-semibold mb-1 small">Consultas del Mes</h6>
@@ -58,7 +58,7 @@
         <div class="card border-0 shadow-sm rounded-3">
             <div class="card-body d-flex align-items-center">
                 <div class="bg-warning-subtle text-warning p-3 rounded-3 me-3 fs-3">
-                    <i class="bi bi-bell"></i>
+                    <i class="fa-solid fa-bell"></i>
                 </div>
                 <div>
                     <h6 class="text-muted text-uppercase fw-semibold mb-1 small">Vacunas Pendientes</h6>
@@ -74,7 +74,7 @@
     <div class="col-lg-5">
         <div class="card border-0 shadow-sm rounded-3 h-100">
             <div class="card-header bg-white border-0 py-3">
-                <h5 class="fw-bold mb-0"><i class="bi bi-pie-chart me-2 text-primary"></i>Distribución de Pacientes</h5>
+                <h5 class="fw-bold mb-0"><i class="fa-solid fa-chart-pie me-2 text-primary"></i>Distribución de Pacientes</h5>
             </div>
             <div class="card-body d-flex justify-content-center align-items-center">
                 <div style="max-width: 320px; width: 100%;">
@@ -88,7 +88,7 @@
     <div class="col-lg-7">
         <div class="card border-0 shadow-sm rounded-3 h-100">
             <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
-                <h5 class="fw-bold mb-0 text-warning"><i class="bi bi-exclamation-circle me-2"></i>Vacunas Críticas y por Vencer</h5>
+                <h5 class="fw-bold mb-0 text-warning"><i class="fa-solid fa-triangle-exclamation me-2"></i>Vacunas Críticas y por Vencer</h5>
                 <a href="index.php?action=alertas" class="btn btn-sm btn-outline-primary">Ver todas</a>
             </div>
             <div class="card-body p-0">
@@ -107,7 +107,7 @@
                             <?php if (empty($alertasCriticas)): ?>
                                 <tr>
                                     <td colspan="5" class="text-center text-muted py-4">
-                                        <i class="bi bi-check2-circle fs-3 text-success d-block mb-1"></i>
+                                        <i class="fa-solid fa-circle-check fs-3 text-success d-block mb-1"></i>
                                         Todas las mascotas se encuentran al día con sus vacunas.
                                     </td>
                                 </tr>
@@ -126,7 +126,7 @@
                                         </td>
                                         <td class="text-center">
                                             <a href="index.php?action=alertas" class="btn btn-outline-success btn-sm" title="Notificar">
-                                                <i class="bi bi-whatsapp"></i>
+                                                <i class="fa-brands fa-whatsapp"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -143,7 +143,7 @@
 <!-- Últimas Consultas Médicas -->
 <div class="card border-0 shadow-sm rounded-3">
     <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
-        <h5 class="fw-bold mb-0"><i class="bi bi-clock-history me-2 text-primary"></i>Actividad Médica Reciente</h5>
+        <h5 class="fw-bold mb-0"><i class="fa-solid fa-clock-rotate-left me-2 text-primary"></i>Actividad Médica Reciente</h5>
         <a href="index.php?action=consultas" class="btn btn-sm btn-outline-primary">Ver historial completo</a>
     </div>
     <div class="card-body p-0">
@@ -172,7 +172,7 @@
                                 <td class="fw-semibold text-success"><?= formato_pesos((float)$c['costo']) ?></td>
                                 <td class="text-end">
                                     <a href="index.php?action=consultas_show&id=<?= $c['id'] ?>" class="btn btn-sm btn-light border">
-                                        <i class="bi bi-eye"></i>
+                                        <i class="fa-solid fa-eye"></i>
                                     </a>
                                 </td>
                             </tr>

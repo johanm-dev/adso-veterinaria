@@ -4,7 +4,7 @@
         <p class="text-muted small">Registro clínico de valoraciones, diagnósticos y actos veterinarios</p>
     </div>
     <a href="index.php?action=consultas_create" class="btn btn-primary shadow-sm">
-        <i class="bi bi-plus-lg me-1"></i> Nueva Consulta
+        <i class="fa-solid fa-plus me-1"></i> Nueva Consulta
     </a>
 </div>
 
@@ -44,7 +44,7 @@
                                 <td><?= $c['proximo_control'] ? e($c['proximo_control']) : '—' ?></td>
                                 <td class="text-end">
                                     <a href="index.php?action=consultas_show&id=<?= $c['id'] ?>" class="btn btn-sm btn-outline-primary" title="Ver Detalle Clínico">
-                                        <i class="bi bi-eye me-1"></i> Detalle
+                                        <i class="fa-solid fa-eye me-1"></i> Detalle
                                     </a>
                                 </td>
                             </tr>

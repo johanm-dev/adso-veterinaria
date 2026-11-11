@@ -6,7 +6,7 @@
                 <p class="text-muted small">Actualice la ficha de <?= e($mascota['nombre']) ?></p>
             </div>
             <a href="index.php?action=mascotas_historial&id=<?= $mascota['id'] ?>" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left me-1"></i> Volver al Historial
+                <i class="fa-solid fa-arrow-left me-1"></i> Volver al Historial
             </a>
         </div>
 
@@ -73,7 +73,7 @@
                     <div class="d-flex justify-content-end gap-2">
                         <a href="index.php?action=mascotas_historial&id=<?= $mascota['id'] ?>" class="btn btn-light border">Cancelar</a>
                         <button type="submit" class="btn btn-primary px-4">
-                            <i class="bi bi-check-lg me-1"></i> Actualizar Ficha
+                            <i class="fa-solid fa-check me-1"></i> Actualizar Ficha
                         </button>
                     </div>
                 </form>

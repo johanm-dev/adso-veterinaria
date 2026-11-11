@@ -6,7 +6,7 @@
                 <p class="text-muted small">Registro exclusivo del Administrador con cifrado Bcrypt y asignación de rol</p>
             </div>
             <a href="index.php?action=usuarios" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left me-1"></i> Volver
+                <i class="fa-solid fa-arrow-left me-1"></i> Volver
             </a>
         </div>
 
@@ -54,7 +54,7 @@
 
                     <!-- Campos adicionales automáticos si el rol es Veterinario -->
                     <div id="datosVeterinario" class="mt-4 p-3 bg-light rounded-3 border d-none">
-                        <h6 class="fw-bold text-primary mb-3"><i class="bi bi-hospital me-1"></i>Perfil Profesional de Veterinario</h6>
+                        <h6 class="fw-bold text-primary mb-3"><i class="fa-solid fa-user-doctor me-1"></i>Perfil Profesional de Veterinario</h6>
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <label for="tarjeta_profesional" class="form-label fw-semibold">Tarjeta Profesional <span class="text-danger">*</span></label>
@@ -77,7 +77,7 @@
                     <div class="d-flex justify-content-end gap-2">
                         <a href="index.php?action=usuarios" class="btn btn-light border">Cancelar</a>
                         <button type="submit" class="btn btn-primary px-4">
-                            <i class="bi bi-person-check-fill me-1"></i> Crear Usuario
+                            <i class="fa-solid fa-user-check me-1"></i> Crear Usuario
                         </button>
                     </div>
                 </form>

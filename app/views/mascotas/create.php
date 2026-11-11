@@ -6,7 +6,7 @@
                 <p class="text-muted small">Diligencie la información de la mascota y asóciela a su propietario</p>
             </div>
             <a href="index.php?action=mascotas" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left me-1"></i> Volver
+                <i class="fa-solid fa-arrow-left me-1"></i> Volver
             </a>
         </div>
 
@@ -75,7 +75,7 @@
                     <div class="d-flex justify-content-end gap-2">
                         <a href="index.php?action=mascotas" class="btn btn-light border">Cancelar</a>
                         <button type="submit" class="btn btn-primary px-4">
-                            <i class="bi bi-save me-1"></i> Guardar Mascota
+                            <i class="fa-solid fa-floppy-disk me-1"></i> Guardar Mascota
                         </button>
                     </div>
                 </form>

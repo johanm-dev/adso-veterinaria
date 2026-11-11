@@ -1,3 +1,4 @@
+<?php if (isset($_SESSION['usuario_id'])): ?>
     </div>
 </main>
 
@@ -6,6 +7,7 @@
         Veterinaria Digital &copy; <?= date('Y') ?> - ADSO SENA (Johan Muñoz / Instructora Joan Castillo) | Conectado a PostgreSQL 17
     </div>
 </footer>
+<?php endif; ?>
 
 <!-- Bootstrap 5 Bundle JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

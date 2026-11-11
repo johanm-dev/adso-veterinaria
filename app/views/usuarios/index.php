@@ -4,7 +4,7 @@
         <p class="text-muted small">Módulo exclusivo de Administrador para crear cuentas y asignar roles (RBAC)</p>
     </div>
     <a href="index.php?action=usuarios_create" class="btn btn-primary shadow-sm">
-        <i class="bi bi-person-plus-fill me-1"></i> Nuevo Usuario
+        <i class="fa-solid fa-user-plus me-1"></i> Nuevo Usuario
     </a>
 </div>
 
@@ -68,11 +68,11 @@
                                             <input type="hidden" name="id" value="<?= $u['id'] ?>">
                                             <?php if ($u['activo']): ?>
                                                 <button type="submit" class="btn btn-sm btn-outline-warning" title="Desactivar acceso">
-                                                    <i class="bi bi-person-slash me-1"></i> Desactivar
+                                                    <i class="fa-solid fa-user-slash me-1"></i> Desactivar
                                                 </button>
                                             <?php else: ?>
                                                 <button type="submit" class="btn btn-sm btn-outline-success" title="Reactivar acceso">
-                                                    <i class="bi bi-person-check me-1"></i> Activar
+                                                    <i class="fa-solid fa-user-check me-1"></i> Activar
                                                 </button>
                                             <?php endif; ?>
                                         </form>

@@ -5,16 +5,16 @@
     </div>
     <div class="d-flex gap-2">
         <a href="index.php?action=consultas_create&mascota_id=<?= $mascota['id'] ?>" class="btn btn-primary">
-            <i class="bi bi-clipboard2-pulse me-1"></i> Nueva Consulta
+            <i class="fa-solid fa-stethoscope me-1"></i> Nueva Consulta
         </a>
         <a href="index.php?action=vacunas_create&mascota_id=<?= $mascota['id'] ?>" class="btn btn-success">
-            <i class="bi bi-eyedropper me-1"></i> Aplicar Vacuna
+            <i class="fa-solid fa-syringe me-1"></i> Aplicar Vacuna
         </a>
         <a href="index.php?action=mascotas_edit&id=<?= $mascota['id'] ?>" class="btn btn-outline-secondary">
-            <i class="bi bi-pencil me-1"></i> Editar Ficha
+            <i class="fa-solid fa-pen-to-square me-1"></i> Editar Ficha
         </a>
         <a href="index.php?action=mascotas" class="btn btn-outline-secondary">
-            <i class="bi bi-arrow-left"></i>
+            <i class="fa-solid fa-arrow-left"></i>
         </a>
     </div>
 </div>
@@ -35,15 +35,15 @@
             <div class="col-md-5 border-end">
                 <span class="text-muted small text-uppercase">Propietario Responsable</span>
                 <h5 class="fw-bold text-dark mb-1"><?= e($mascota['propietario_nombre']) ?></h5>
-                <div class="small text-muted mb-1"><i class="bi bi-person-vcard me-1"></i> Doc: <?= e($mascota['propietario_doc']) ?></div>
+                <div class="small text-muted mb-1"><i class="fa-solid fa-id-card me-1"></i> Doc: <?= e($mascota['propietario_doc']) ?></div>
                 <div class="small text-muted mb-1">
-                    <i class="bi bi-whatsapp me-1 text-success"></i> Tel:
+                    <i class="fa-brands fa-whatsapp me-1 text-success"></i> Tel:
                     <a href="https://api.whatsapp.com/send?phone=57<?= preg_replace('/\D/', '', $mascota['propietario_telefono']) ?>" target="_blank" class="text-success text-decoration-none">
                         <?= e($mascota['propietario_telefono']) ?>
                     </a>
                 </div>
-                <div class="small text-muted mb-1"><i class="bi bi-envelope me-1"></i> Correo: <?= e($mascota['propietario_email'] ?? 'No registrado') ?></div>
-                <div class="small text-muted"><i class="bi bi-geo-alt me-1"></i> Dir: <?= e($mascota['propietario_dir'] ?? 'No registrada') ?></div>
+                <div class="small text-muted mb-1"><i class="fa-solid fa-envelope me-1"></i> Correo: <?= e($mascota['propietario_email'] ?? 'No registrado') ?></div>
+                <div class="small text-muted"><i class="fa-solid fa-location-dot me-1"></i> Dir: <?= e($mascota['propietario_dir'] ?? 'No registrada') ?></div>
             </div>
 
             <div class="col-md-4 d-flex flex-column justify-content-center">
@@ -70,12 +70,12 @@
 <ul class="nav nav-tabs mb-3" id="expedienteTab" role="tablist">
     <li class="nav-item" role="presentation">
         <button class="nav-link active fw-semibold" id="consultas-tab" data-bs-toggle="tab" data-bs-target="#consultas-pane" type="button" role="tab">
-            <i class="bi bi-journal-medical me-1"></i> Historial de Consultas (<?= count($consultas) ?>)
+            <i class="fa-solid fa-notes-medical me-1"></i> Historial de Consultas (<?= count($consultas) ?>)
         </button>
     </li>
     <li class="nav-item" role="presentation">
         <button class="nav-link fw-semibold" id="vacunas-tab" data-bs-toggle="tab" data-bs-target="#vacunas-pane" type="button" role="tab">
-            <i class="bi bi-shield-check me-1"></i> Carnet de Vacunación (<?= count($vacunas) ?>)
+            <i class="fa-solid fa-shield-dog me-1"></i> Carnet de Vacunación (<?= count($vacunas) ?>)
         </button>
     </li>
 </ul>
@@ -117,7 +117,7 @@
                                         <td><?= $c['proximo_control'] ? e($c['proximo_control']) : '—' ?></td>
                                         <td class="text-end">
                                             <a href="index.php?action=consultas_show&id=<?= $c['id'] ?>" class="btn btn-sm btn-light border">
-                                                <i class="bi bi-eye"></i>
+                                                <i class="fa-solid fa-eye"></i>
                                             </a>
                                         </td>
                                     </tr>

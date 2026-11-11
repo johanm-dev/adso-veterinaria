@@ -7,17 +7,17 @@
             </div>
             <div class="d-flex gap-2">
                 <a href="index.php?action=mascotas_historial&id=<?= $consulta['mascota_id'] ?>" class="btn btn-outline-primary">
-                    <i class="bi bi-folder2-open me-1"></i> Ver Historial del Paciente
+                    <i class="fa-solid fa-folder-open me-1"></i> Ver Historial del Paciente
                 </a>
                 <a href="index.php?action=consultas" class="btn btn-outline-secondary">
-                    <i class="bi bi-arrow-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
                 </a>
             </div>
         </div>
 
         <div class="card border-0 shadow-sm rounded-3 mb-4">
             <div class="card-header bg-primary text-white py-3">
-                <h5 class="fw-bold mb-0"><i class="bi bi-clipboard2-pulse me-2"></i>Informe de Acto Clínico</h5>
+                <h5 class="fw-bold mb-0"><i class="fa-solid fa-stethoscope me-2"></i>Informe de Acto Clínico</h5>
             </div>
             <div class="card-body p-4">
                 <div class="row g-4">

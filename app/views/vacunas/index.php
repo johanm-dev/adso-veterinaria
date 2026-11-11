@@ -4,7 +4,7 @@
         <p class="text-muted small">Administración de biológicos y calendarización automática de refuerzos (Regla RN-01)</p>
     </div>
     <a href="index.php?action=vacunas_create" class="btn btn-success shadow-sm">
-        <i class="bi bi-eyedropper me-1"></i> Aplicar Vacuna
+        <i class="fa-solid fa-syringe me-1"></i> Aplicar Vacuna
     </a>
 </div>
 

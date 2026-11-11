@@ -8,7 +8,7 @@
 <!-- Alertas de Vacunación -->
 <div class="card border-0 shadow-sm rounded-3 mb-4">
     <div class="card-header bg-white border-0 py-3">
-        <h5 class="fw-bold mb-0 text-danger"><i class="bi bi-bell-fill me-2"></i>Alertas de Vacunas (Por Vencer o Vencidas)</h5>
+        <h5 class="fw-bold mb-0 text-danger"><i class="fa-solid fa-bell me-2"></i>Alertas de Vacunas (Por Vencer o Vencidas)</h5>
     </div>
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -52,7 +52,7 @@
                                 </td>
                                 <td class="text-center">
                                     <a href="<?= e($av['whatsapp_url']) ?>" target="_blank" class="btn btn-success btn-sm px-3 shadow-sm">
-                                        <i class="bi bi-whatsapp me-1"></i> WhatsApp
+                                        <i class="fa-brands fa-whatsapp me-1"></i> WhatsApp
                                     </a>
                                 </td>
                             </tr>
@@ -67,7 +67,7 @@
 <!-- Alertas de Controles Médicos -->
 <div class="card border-0 shadow-sm rounded-3">
     <div class="card-header bg-white border-0 py-3">
-        <h5 class="fw-bold mb-0 text-primary"><i class="bi bi-calendar-event me-2"></i>Controles Médicos Programados</h5>
+        <h5 class="fw-bold mb-0 text-primary"><i class="fa-solid fa-calendar-check me-2"></i>Controles Médicos Programados</h5>
     </div>
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -105,7 +105,7 @@
                                 <td><span class="badge bg-info text-dark"><?= e($ac['estado']) ?></span></td>
                                 <td class="text-center">
                                     <a href="<?= e($ac['whatsapp_url']) ?>" target="_blank" class="btn btn-success btn-sm px-3 shadow-sm">
-                                        <i class="bi bi-whatsapp me-1"></i> WhatsApp
+                                        <i class="fa-brands fa-whatsapp me-1"></i> WhatsApp
                                     </a>
                                 </td>
                             </tr>

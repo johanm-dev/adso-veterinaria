@@ -31,10 +31,10 @@
 
             <div class="col-md-3 d-flex gap-2">
                 <button type="submit" class="btn btn-primary w-100">
-                    <i class="bi bi-filter me-1"></i> Filtrar
+                    <i class="fa-solid fa-filter me-1"></i> Filtrar
                 </button>
                 <a href="index.php?action=reportes_exportar&tipo=<?= e($tipo) ?>&fecha_inicio=<?= e($fechaInicio) ?>&fecha_fin=<?= e($fechaFin) ?>" class="btn btn-success text-nowrap">
-                    <i class="bi bi-file-earmark-arrow-down me-1"></i> Descargar CSV
+                    <i class="fa-solid fa-file-arrow-down me-1"></i> Descargar CSV
                 </a>
             </div>
         </form>

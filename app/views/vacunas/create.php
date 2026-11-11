@@ -6,7 +6,7 @@
                 <p class="text-muted small">Cálculo de próxima dosis automático según intervalo (Regla RN-01)</p>
             </div>
             <a href="index.php?action=vacunas" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left me-1"></i> Volver
+                <i class="fa-solid fa-arrow-left me-1"></i> Volver
             </a>
         </div>
 
@@ -74,7 +74,7 @@
                     <div class="d-flex justify-content-end gap-2">
                         <a href="index.php?action=vacunas" class="btn btn-light border">Cancelar</a>
                         <button type="submit" class="btn btn-success px-4">
-                            <i class="bi bi-eyedropper me-1"></i> Aplicar y Programar Refuerzo
+                            <i class="fa-solid fa-syringe me-1"></i> Aplicar y Programar Refuerzo
                         </button>
                     </div>
                 </form>

@@ -4,7 +4,7 @@
         <p class="text-muted small">Administración de clientes y sus animales asociados</p>
     </div>
     <a href="index.php?action=propietarios_create" class="btn btn-primary shadow-sm">
-        <i class="bi bi-person-plus me-1"></i> Registrar Propietario
+        <i class="fa-solid fa-user-plus me-1"></i> Registrar Propietario
     </a>
 </div>
 
@@ -14,7 +14,7 @@
             <input type="hidden" name="action" value="propietarios">
             <div class="col-md-10">
                 <div class="input-group">
-                    <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                    <span class="input-group-text bg-white"><i class="fa-solid fa-magnifying-glass"></i></span>
                     <input type="text" name="q" class="form-control" placeholder="Buscar por nombres, apellidos, documento o teléfono..." value="<?= e($buscar) ?>">
                 </div>
             </div>
@@ -53,7 +53,7 @@
                                 <td><?= e($p['nombre_completo']) ?></td>
                                 <td>
                                     <a href="https://api.whatsapp.com/send?phone=57<?= preg_replace('/\D/', '', $p['telefono']) ?>" target="_blank" class="text-decoration-none text-success">
-                                        <i class="bi bi-whatsapp me-1"></i> <?= e($p['telefono']) ?>
+                                        <i class="fa-brands fa-whatsapp me-1"></i> <?= e($p['telefono']) ?>
                                     </a>
                                 </td>
                                 <td><?= e($p['correo'] ?? '—') ?></td>
@@ -65,14 +65,14 @@
                                 </td>
                                 <td class="text-end">
                                     <a href="index.php?action=mascotas_create&propietario_id=<?= $p['id'] ?>" class="btn btn-sm btn-outline-success" title="Agregar Mascota">
-                                        <i class="bi bi-plus-circle"></i>
+                                        <i class="fa-solid fa-circle-plus"></i>
                                     </a>
                                     <a href="index.php?action=propietarios_edit&id=<?= $p['id'] ?>" class="btn btn-sm btn-outline-primary" title="Editar">
-                                        <i class="bi bi-pencil"></i>
+                                        <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     <button type="button" class="btn btn-sm btn-outline-danger" title="Eliminar"
                                             data-bs-toggle="modal" data-bs-target="#deleteModal<?= $p['id'] ?>">
-                                        <i class="bi bi-trash"></i>
+                                        <i class="fa-solid fa-trash-can"></i>
                                     </button>
 
                                     <!-- Modal Confirmación Eliminación (RN-02) -->
@@ -87,7 +87,7 @@
                                                     ¿Confirma que desea eliminar al propietario <strong><?= e($p['nombre_completo']) ?></strong>?
                                                     <?php if ($p['total_mascotas'] > 0): ?>
                                                         <div class="alert alert-warning mt-3 small">
-                                                            <i class="bi bi-exclamation-triangle-fill me-1"></i>
+                                                            <i class="fa-solid fa-triangle-exclamation me-1"></i>
                                                             <strong>Aviso (Regla RN-02):</strong> Este propietario tiene <strong><?= $p['total_mascotas'] ?> mascota(s)</strong> asociadas. El sistema denegará la eliminación para preservar el historial clínico.
                                                         </div>
                                                     <?php endif; ?>

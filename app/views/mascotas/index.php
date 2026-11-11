@@ -4,7 +4,7 @@
         <p class="text-muted small">Pacientes registrados en el sistema veterinario</p>
     </div>
     <a href="index.php?action=mascotas_create" class="btn btn-primary shadow-sm">
-        <i class="bi bi-plus-lg me-1"></i> Registrar Paciente
+        <i class="fa-solid fa-plus me-1"></i> Registrar Paciente
     </a>
 </div>
 
@@ -14,7 +14,7 @@
             <input type="hidden" name="action" value="mascotas">
             <div class="col-md-6">
                 <div class="input-group">
-                    <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                    <span class="input-group-text bg-white"><i class="fa-solid fa-magnifying-glass"></i></span>
                     <input type="text" name="q" class="form-control" placeholder="Buscar por mascota, propietario o documento..." value="<?= e($buscar) ?>">
                 </div>
             </div>
@@ -76,14 +76,14 @@
                                 </td>
                                 <td class="text-end">
                                     <a href="index.php?action=mascotas_historial&id=<?= $m['id'] ?>" class="btn btn-sm btn-outline-primary" title="Ver Historial Clínico">
-                                        <i class="bi bi-folder2-open me-1"></i> Historial
+                                        <i class="fa-solid fa-folder-open me-1"></i> Historial
                                     </a>
                                     <a href="index.php?action=mascotas_edit&id=<?= $m['id'] ?>" class="btn btn-sm btn-light border" title="Editar">
-                                        <i class="bi bi-pencil"></i>
+                                        <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     <button type="button" class="btn btn-sm btn-outline-danger" title="Inactivar"
                                             data-bs-toggle="modal" data-bs-target="#delMascota<?= $m['id'] ?>">
-                                        <i class="bi bi-trash"></i>
+                                        <i class="fa-solid fa-trash-can"></i>
                                     </button>
 
                                     <!-- Modal Confirmación Eliminación Lógica -->
