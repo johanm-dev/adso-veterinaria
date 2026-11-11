@@ -1,7 +1,7 @@
 package com.sena.veterinaria;
 
-import android.app.Activity;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
@@ -22,12 +23,20 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class MainActivity extends Activity {
 
+    private static final String TAG = "VetDigital";
     private static final String PREFS_NAME = "VetPrefs";
     private static final String KEY_SERVER_IP = "server_ip";
-    private static final String DEFAULT_SERVER_IP = "192.168.137.6";
-    private static final int LOAD_TIMEOUT_MS = 10000;
+    private static final String DEFAULT_WIFI_IP = "192.168.137.6";
+    private static final int PROBE_TIMEOUT_MS = 1800;
 
     private WebView webView;
     private ProgressBar progressBar;
@@ -35,18 +44,8 @@ public class MainActivity extends Activity {
     private EditText etIpServidor;
     private Button btnReintentar;
 
-    private final Handler timeoutHandler = new Handler(Looper.getMainLooper());
-    private boolean pageLoaded = false;
-
-    private final Runnable timeoutRunnable = new Runnable() {
-        @Override
-        public void run() {
-            if (!pageLoaded) {
-                webView.stopLoading();
-                mostrarErrorConexion();
-            }
-        }
-    };
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -54,11 +53,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        webView = (WebView) findViewById(R.id.webView);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        layoutError = (LinearLayout) findViewById(R.id.layoutError);
-        etIpServidor = (EditText) findViewById(R.id.etIpServidor);
-        btnReintentar = (Button) findViewById(R.id.btnReintentar);
+        webView = findViewById(R.id.webView);
+        progressBar = findViewById(R.id.progressBar);
+        layoutError = findViewById(R.id.layoutError);
+        etIpServidor = findViewById(R.id.etIpServidor);
+        btnReintentar = findViewById(R.id.btnReintentar);
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -92,19 +91,14 @@ public class MainActivity extends Activity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                pageLoaded = false;
                 layoutError.setVisibility(View.GONE);
                 webView.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.VISIBLE);
-                timeoutHandler.removeCallbacks(timeoutRunnable);
-                timeoutHandler.postDelayed(timeoutRunnable, LOAD_TIMEOUT_MS);
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                pageLoaded = true;
-                timeoutHandler.removeCallbacks(timeoutRunnable);
                 progressBar.setVisibility(View.GONE);
             }
 
@@ -112,14 +106,14 @@ public class MainActivity extends Activity {
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
                 if (request.isForMainFrame()) {
-                    pageLoaded = true;
-                    timeoutHandler.removeCallbacks(timeoutRunnable);
+                    Log.e(TAG, "Error cargando URL: " + error.getDescription());
                     mostrarErrorConexion();
                 }
             }
         });
 
         webView.setWebChromeClient(new WebChromeClient() {
+            @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
                 if (newProgress < 100 && layoutError.getVisibility() != View.VISIBLE) {
@@ -132,23 +126,96 @@ public class MainActivity extends Activity {
         });
 
         btnReintentar.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 String nuevaIp = etIpServidor.getText().toString().trim();
-                if (nuevaIp.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Ingresa la IP de tu PC", Toast.LENGTH_SHORT).show();
-                    return;
+                if (!nuevaIp.isEmpty()) {
+                    guardarIpServidor(nuevaIp);
                 }
-                guardarIpServidor(nuevaIp);
-                cargarServidor();
+                conectarAutomaticamente(true);
             }
         });
 
-        cargarServidor();
+        conectarAutomaticamente(false);
+    }
+
+    private void conectarAutomaticamente(final boolean priorizarGuardada) {
+        layoutError.setVisibility(View.GONE);
+        webView.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setProgress(15);
+
+        final String ipGuardada = obtenerIpGuardada();
+        etIpServidor.setText(ipGuardada);
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                List<String> candidatos = new ArrayList<>();
+                if (priorizarGuardada) {
+                    candidatos.add(construirUrl(ipGuardada));
+                }
+                // 1. Túnel USB ADB (adb reverse tcp:8080 tcp:80)
+                candidatos.add("http://127.0.0.1:8080/veterinaria/");
+                // 2. IP guardada / Wi-Fi local actual
+                String urlGuardada = construirUrl(ipGuardada);
+                if (!candidatos.contains(urlGuardada)) {
+                    candidatos.add(urlGuardada);
+                }
+                // 3. Emulador de Android Studio
+                candidatos.add("http://10.0.2.2/veterinaria/");
+
+                String urlDisponible = null;
+                for (String candidato : candidatos) {
+                    if (probarConexion(candidato)) {
+                        urlDisponible = candidato;
+                        break;
+                    }
+                }
+
+                final String resultado = urlDisponible;
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (isFinishing() || isDestroyed()) return;
+                        if (resultado != null) {
+                            Log.i(TAG, "Conectado a servidor: " + resultado);
+                            webView.loadUrl(resultado);
+                        } else {
+                            Log.w(TAG, "Ningun servidor respondio");
+                            mostrarErrorConexion();
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    private boolean probarConexion(String urlStr) {
+        HttpURLConnection conn = null;
+        try {
+            URL url = new URL(urlStr);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(PROBE_TIMEOUT_MS);
+            conn.setReadTimeout(PROBE_TIMEOUT_MS);
+            conn.setRequestMethod("GET");
+            conn.setInstanceFollowRedirects(true);
+            int code = conn.getResponseCode();
+            Log.d(TAG, "Sondeo " + urlStr + " -> HTTP " + code);
+            return code >= 200 && code < 400;
+        } catch (Exception e) {
+            Log.d(TAG, "Fallo sondeo " + urlStr + ": " + e.getMessage());
+            return false;
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
+            }
+        }
     }
 
     private String obtenerIpGuardada() {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        return prefs.getString(KEY_SERVER_IP, DEFAULT_SERVER_IP);
+        return prefs.getString(KEY_SERVER_IP, DEFAULT_WIFI_IP);
     }
 
     private void guardarIpServidor(String ip) {
@@ -157,18 +224,11 @@ public class MainActivity extends Activity {
     }
 
     private String construirUrl(String ipOUrl) {
-        if (ipOUrl.startsWith("http://") || ipOUrl.startsWith("https://")) {
-            return ipOUrl;
+        String limpio = ipOUrl.trim();
+        if (limpio.startsWith("http://") || limpio.startsWith("https://")) {
+            return limpio.endsWith("/") ? limpio : limpio + "/";
         }
-        return "http://" + ipOUrl + "/veterinaria";
-    }
-
-    private void cargarServidor() {
-        String ip = obtenerIpGuardada();
-        etIpServidor.setText(ip);
-        layoutError.setVisibility(View.GONE);
-        webView.setVisibility(View.VISIBLE);
-        webView.loadUrl(construirUrl(ip));
+        return "http://" + limpio + "/veterinaria/";
     }
 
     private void mostrarErrorConexion() {
@@ -180,7 +240,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        timeoutHandler.removeCallbacks(timeoutRunnable);
+        executor.shutdownNow();
         super.onDestroy();
     }
 

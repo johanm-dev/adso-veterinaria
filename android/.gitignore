@@ -1,0 +1,7 @@
+.gradle/
+build/
+app/build/
+build_cli/
+.idea/
+captures/
+*.iml
