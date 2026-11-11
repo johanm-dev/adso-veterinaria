@@ -32,8 +32,8 @@ abstract class Controller {
 
     protected function requireAdmin(): void {
         $this->requireLogin();
-        if ($_SESSION['usuario_rol'] !== 'administrador') {
-            flash('error', 'Acceso denegado: se requieren permisos de administrador.');
+        if (($_SESSION['usuario_rol'] ?? '') !== 'admin') {
+            flash('error', 'Acceso denegado: solo el administrador puede gestionar usuarios.');
             $this->redirect('index.php?action=dashboard');
         }
     }

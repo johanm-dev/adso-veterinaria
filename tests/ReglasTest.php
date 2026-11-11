@@ -26,6 +26,7 @@ use App\Models\Vacuna;
 use App\Models\Propietario;
 use App\Models\Consulta;
 use App\Models\Alerta;
+use App\Models\Usuario;
 
 echo "=== INICIANDO PRUEBAS DE REGLAS DE NEGOCIO Y CALIDAD ===" . PHP_EOL . PHP_EOL;
 
@@ -148,4 +149,48 @@ if (str_starts_with($url, 'https://api.whatsapp.com/send?phone=573001234567')) {
     exit(1);
 }
 
-echo PHP_EOL . "=== TODAS LAS PRUEBAS AUTOMATIZADAS PASARON CON ÉXITO (5/5) ===" . PHP_EOL;
+// ---------------------------------------------------------
+// PRUEBA 6: Creación de Usuario (Bcrypt + Perfil Veterinario + Validación Rol)
+// ---------------------------------------------------------
+echo "[TEST 6] Gestión de Usuarios: Creación Bcrypt y validación de rol... ";
+$rolInvalidoBloqueado = false;
+try {
+    Usuario::create([
+        'nombre'   => 'Test Inválido',
+        'correo'   => 'invalido@vet.com',
+        'password' => 'Clave123*',
+        'rol'      => 'superusuario'
+    ]);
+} catch (\InvalidArgumentException $e) {
+    $rolInvalidoBloqueado = true;
+}
+
+$nuevoVetId = Usuario::create([
+    'nombre'              => 'Dr. Test Automatizado',
+    'correo'              => 'vet.test@vet.com',
+    'password'            => 'ClaveTest123*',
+    'rol'                 => 'veterinario',
+    'tarjeta_profesional' => 'TP-TEST-999',
+    'especialidad'        => 'Prueba QA',
+    'telefono'            => '3000009999'
+]);
+
+$creado = Usuario::findByEmail('vet.test@vet.com');
+$hashValido = $creado && password_verify('ClaveTest123*', $creado['password_hash']);
+
+$stmtVet = $pdo->prepare("SELECT COUNT(*) FROM veterinario WHERE usuario_id = :uid AND tarjeta_profesional = 'TP-TEST-999'");
+$stmtVet->execute(['uid' => $nuevoVetId]);
+$vetPerfilExiste = ((int)$stmtVet->fetchColumn()) === 1;
+
+// Limpieza de prueba
+$pdo->prepare("DELETE FROM veterinario WHERE usuario_id = :uid")->execute(['uid' => $nuevoVetId]);
+$pdo->prepare("DELETE FROM usuario WHERE id = :uid")->execute(['uid' => $nuevoVetId]);
+
+if ($rolInvalidoBloqueado && $hashValido && $vetPerfilExiste) {
+    echo "PASÓ (Hash Bcrypt válido, perfil veterinario creado y rol inválido rechazado)" . PHP_EOL;
+} else {
+    echo "FALLÓ" . PHP_EOL;
+    exit(1);
+}
+
+echo PHP_EOL . "=== TODAS LAS PRUEBAS AUTOMATIZADAS PASARON CON ÉXITO (6/6) ===" . PHP_EOL;

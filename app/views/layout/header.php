@@ -66,6 +66,13 @@ $actionActual = $_GET['action'] ?? 'dashboard';
                         <i class="bi bi-file-earmark-spreadsheet me-1"></i> Reportes
                     </a>
                 </li>
+                <?php if ($rolUsuario === 'admin'): ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?= str_starts_with($actionActual, 'usuarios') ? 'active fw-bold' : '' ?>" href="index.php?action=usuarios">
+                            <i class="bi bi-person-gear me-1"></i> Usuarios
+                        </a>
+                    </li>
+                <?php endif; ?>
             </ul>
             <div class="d-flex align-items-center text-white">
                 <div class="me-3 text-end d-none d-md-block">

@@ -45,6 +45,7 @@ use App\Controllers\ConsultaController;
 use App\Controllers\VacunaController;
 use App\Controllers\AlertaController;
 use App\Controllers\ReporteController;
+use App\Controllers\UsuarioController;
 
 switch ($action) {
     // Autenticación
@@ -142,6 +143,20 @@ switch ($action) {
         break;
     case 'reportes_exportar':
         (new ReporteController())->exportarCsv();
+        break;
+
+    // Gestión de Usuarios (Solo Administrador)
+    case 'usuarios':
+        (new UsuarioController())->index();
+        break;
+    case 'usuarios_create':
+        (new UsuarioController())->create();
+        break;
+    case 'usuarios_store':
+        (new UsuarioController())->store();
+        break;
+    case 'usuarios_toggle':
+        (new UsuarioController())->toggleActivo();
         break;
 
     default:
