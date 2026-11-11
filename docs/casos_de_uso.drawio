@@ -1,4 +1,4 @@
-﻿<mxfile host="app.diagrams.net" modified="2026-11-05T21:47:00.000Z" agent="Mozilla/5.0" version="24.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-11-05T21:47:00.000Z" agent="Mozilla/5.0" version="24.0.0" type="device">
   <diagram id="CasosDeUsoVeterinaria" name="Casos de Uso - Veterinaria Digital">
     <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="#FFFFFF">
       <root>
@@ -65,6 +65,10 @@
 
         <mxCell id="cu12" value="CU-12: Exportar Reporte&#xa;a CSV (Excel)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="sistema">
           <mxGeometry x="510" y="700" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu13" value="CU-13: Gestionar Usuarios y Roles&#xa;(Solo Administrador - RBAC)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#1D4ED8;strokeWidth=1.8;fontSize=12;fontStyle=1;fontColor=#1E3A8A;" vertex="1" parent="sistema">
+          <mxGeometry x="150" y="805" width="250" height="60" as="geometry" />
         </mxCell>
 
         <!-- RELACIONES INCLUDE / EXTEND -->
@@ -149,6 +153,9 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="a_adm_11" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="actorAdmin" target="cu11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_adm_13" style="endArrow=none;html=1;rounded=0;strokeColor=#1D4ED8;strokeWidth=1.5;" edge="1" parent="1" source="actorAdmin" target="cu13">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
